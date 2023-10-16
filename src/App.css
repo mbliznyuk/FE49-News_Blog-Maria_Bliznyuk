@@ -1,0 +1,42 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
+.App {
+  --background-primary-color: #F3F3F3;
+  --background-accent-color:#2231AA;
+  --background-accent-color2: #5360CD;
+  --background-accent-clor3: #b7b7b7;
+  --background-secondary-button-color:#b7b7b7;
+  --background-burger-color: #fff;
+  --text-primary-color: #313037;
+  --text-secondary-button-color: #313037;
+  --text-secondary-color: #848486;
+  --text-hover-color:#2231AA;
+  --switcher-color:#5360CD;
+  --text-error-color: #FD3419;
+  --border-primary-color: #8D8E97;
+  --border-accent-color: #313037;
+  
+  
+  &.dark {
+    --background-primary-color: #313037;
+    --background-accent-color: #2231AA;
+    --background-accent-color2: #5360CD;
+    --background-accent-clor3: #E8E8E8;
+    --switcher-color:#ffff;
+    --text-secondary-button-color: #313037;
+    --background-secondary-button-color:#b7b7b7;
+    --background-burger-color: #fff;
+    --text-primary-color: #FFFFFF;
+    --text-secondary-color: #8D8E97;
+    --text-error-color: #FD3419;
+    --border-primary-color: #8D8E97;
+    --border-accent-color: #FFFFFF;
+  }
+}
+
+& a {
+  all:unset;
+  color: var(--text-primary-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
