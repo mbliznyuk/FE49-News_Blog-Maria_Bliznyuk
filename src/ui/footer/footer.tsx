@@ -17,7 +17,7 @@ const FooterWrapper = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--border-accent-color);
+  border-top: 1px solid var(--border-primary-color);
 `;
 
 const Year = styled.div``;

@@ -7,7 +7,6 @@ export const MainPage: React.FC = () => {
   return (
     <MainTemplate
       header={<Header></Header>}
-      backLink={<BackLink />}
       title={<Title>Blog</Title>}
       body={<div />}
     />

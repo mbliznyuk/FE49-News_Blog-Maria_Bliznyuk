@@ -1,29 +1,24 @@
 import styled from "styled-components";
 import { Footer } from "../footer/footer";
+import { Pagination } from "../pagination/pagination";
 
 type Props = {
   header: React.ReactNode;
-  backLink: React.ReactNode;
   title: React.ReactNode;
   body: React.ReactNode;
   children?: never;
 };
 
-export const MainTemplate: React.FC<Props> = ({
-  header,
-  backLink,
-  title,
-  body,
-}) => {
+export const MainTemplate: React.FC<Props> = ({ header, title, body }) => {
   return (
     <MainTemplateWrapper>
       {header}
       <ContentWithPaddings>
         <Main>
-          <BackLinkContainer>{backLink}</BackLinkContainer>
           <TitleContainer>{title}</TitleContainer>
           <BodyContainer>{body}</BodyContainer>
         </Main>
+        <Pagination></Pagination>
         <Footer></Footer>
       </ContentWithPaddings>
     </MainTemplateWrapper>

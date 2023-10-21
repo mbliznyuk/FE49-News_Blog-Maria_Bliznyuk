@@ -4,36 +4,37 @@
   --header-color:#FFFFFF;
   --search-input-color: #EBEBEB;
   --background-primary-color: #F3F3F3;
-  --background-accent-color:#2231AA;
-  --background-accent-color2: #5360CD;
-  --background-accent-clor3: #b7b7b7;
+  --button-primary-color: #6C1BDB;
+  --buttun-accent-color:  #912EF2;
+  --input-clor: #fff;
+  --input-accent-color:#6C1BDB;
   --background-secondary-button-color:#b7b7b7;
   --background-burger-color: #fff;
   --text-primary-color: #313037;
   --text-secondary-button-color: #313037;
-  --text-secondary-color: #848486;
+  --text-secondary-color: #606061;
   --text-hover-color:#2231AA;
   --switcher-color:#313037  ;
   --text-error-color: #FD3419;
-  --border-primary-color: #F3F3F3;
-  --border-accent-color:  #dcdcdc;
+  --border-primary-color: #dfdfdf;
+
   
   
   &.dark {
     --header-color:#45444B;
     --background-primary-color: #313037;
-    --background-accent-color: #2231AA;
-    --background-accent-color2: #5360CD;
-    --background-accent-clor3: #E8E8E8;
+    --button-primary-color: #6C1BDB;
+    --buttun-accent-color:  #912EF2;
+    --input-clor:#57565D;
     --switcher-color:#6C1BDB;
+    --text-accent-color:#6C1BDB;
     --text-secondary-button-color: #313037;
     --background-secondary-button-color:#b7b7b7;
     --background-burger-color: #fff;
     --text-primary-color: #FFFFFF;
-    --text-secondary-color: #8D8E97;
+    --text-secondary-color: #e0dfdf;
     --text-error-color: #FD3419;
-    --border-primary-color:#313037;
-    --border-accent-color:  #585858;
+    --border-primary-color:#57565D;
   }
 }
 
