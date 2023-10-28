@@ -2,6 +2,7 @@ import { call, put, takeLatest } from "typed-redux-saga";
 import {
   AllArticlesResponse,
   AllArticlesResponseResult,
+  ArticleCardModel,
 } from "../../api/types";
 import {
   getArticles,
@@ -9,7 +10,6 @@ import {
   getArticlesSuccess,
 } from "./articles-list.slice";
 import { articlesApi } from "./api";
-import { ArticleCardModel } from "./types";
 
 export function* getArticlesSaga() {
   yield takeLatest(getArticles, function* getArticlesHandler() {

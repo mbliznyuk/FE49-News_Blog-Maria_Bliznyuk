@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticleCardModel } from "./types";
+import { ArticleCardModel } from "../../api/types";
 
 const articlesListSlice = createSlice({
   name: "ArticlesList",

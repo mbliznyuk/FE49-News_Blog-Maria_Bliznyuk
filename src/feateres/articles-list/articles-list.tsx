@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
-import { ArticleCardModel } from "./types";
+import { ArticleCardModel } from "../../api/types";
+import { AtricleCard } from "../article-card/article-card";
 
 type ArticlesProps = {
   articles: ArticleCardModel[];
@@ -10,7 +11,7 @@ export const ArticlesList: React.FC<ArticlesProps> = ({ articles }) => {
     <>
       <ArticelsWrapper>
         {articles.map((element, id) => (
-          <div key={id}>{element.title}</div>
+          <AtricleCard key={id} articleCard={element}></AtricleCard>
         ))}
       </ArticelsWrapper>
     </>
@@ -18,5 +19,9 @@ export const ArticlesList: React.FC<ArticlesProps> = ({ articles }) => {
 };
 
 const ArticelsWrapper = styled.div`
+  width: 80%;
+  margin: auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `;

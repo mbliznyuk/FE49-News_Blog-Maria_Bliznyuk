@@ -17,6 +17,7 @@
   --switcher-color:#313037  ;
   --text-error-color: #FD3419;
   --border-primary-color: #dfdfdf;
+  --article-card-color:#FFFFFF;
 
   
   
@@ -35,6 +36,7 @@
     --text-secondary-color: #e0dfdf;
     --text-error-color: #FD3419;
     --border-primary-color:#57565D;
+    --article-card-color:#45444B;
   }
 }
 
