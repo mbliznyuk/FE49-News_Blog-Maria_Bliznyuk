@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const BackLink: React.FC = () => (
   <BackLinkWrapper>
     <StyledLink to={"/"}>
-      <BackLinkText>Back to home</BackLinkText>
+      <BackLinkText>Home</BackLinkText>
     </StyledLink>
   </BackLinkWrapper>
 );

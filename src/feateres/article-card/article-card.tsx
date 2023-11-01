@@ -1,28 +1,35 @@
+import moment from "moment";
+import { useState } from "react";
 import { styled } from "styled-components";
 import { ArticleCardModel } from "../../api/types";
-import { useState } from "react";
-import { isLiked } from "./likes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import moment from "moment";
+import { isFavorided, toggle } from "./favorites";
+import { AtricleCardBookmark } from "./bookmark";
 
 type ArticleCardProps = {
   articleCard: ArticleCardModel;
 };
 
 export const AtricleCard: React.FC<ArticleCardProps> = ({ articleCard }) => {
-  const [isLike, setIsLike] = useState(isLiked(articleCard.id));
+  // const [isFavorite, setIsFavorite] = useState(isFavorided(articleCard.id));
+  console.log(articleCard.id);
   return (
     <ArticleWrapper>
-      <CardImageWrapper>
+      <CardImageWrapper
+        onClick={(event) => {
+          event.stopPropagation();
+          event.preventDefault();
+        }}
+      >
         <img src={articleCard.image_url} alt="#"></img>
       </CardImageWrapper>
       <PostCardDate>
         {moment(articleCard.published_at).format("LL")}
       </PostCardDate>
       <PostCardTitle>{articleCard.title}</PostCardTitle>
-      <LikeIconWrapper>
-        <i className="fa-solid fa-heart"></i>
-      </LikeIconWrapper>
+      <IconWrapper>
+        {" "}
+        <AtricleCardBookmark articleCard={articleCard}></AtricleCardBookmark>
+      </IconWrapper>
     </ArticleWrapper>
   );
 };
@@ -80,10 +87,6 @@ const CardImageWrapper = styled.div`
   }
 `;
 
-const LikeIconWrapper = styled.div`
-  text-align: end;
-  cursor: pointer;
-  width: 95%;
-  font-size: 18px;
-  color: red;
+const IconWrapper = styled.div`
+  margin-right: 20px;
 `;

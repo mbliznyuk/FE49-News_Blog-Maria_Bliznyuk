@@ -1,17 +1,25 @@
 import { styled } from "styled-components";
 import { ArticleCardModel } from "../../api/types";
 import { AtricleCard } from "../article-card/article-card";
+import { Link } from "react-router-dom";
 
 type ArticlesProps = {
   articles: ArticleCardModel[];
 };
 
 export const ArticlesList: React.FC<ArticlesProps> = ({ articles }) => {
+  const getArticleById = (id: number) =>
+    articles.find((item) => item.id === id);
   return (
     <>
       <ArticelsWrapper>
         {articles.map((element, id) => (
-          <AtricleCard key={id} articleCard={element}></AtricleCard>
+          <StyledLink key={id} to={`/articles/${element.id}`}>
+            <AtricleCard
+              key={id}
+              articleCard={getArticleById(element.id)!}
+            ></AtricleCard>
+          </StyledLink>
         ))}
       </ArticelsWrapper>
     </>
@@ -24,4 +32,7 @@ const ArticelsWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: unset;
 `;

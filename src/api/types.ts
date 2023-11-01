@@ -27,3 +27,17 @@ export type ArticleCardModel = {
   published_at: string;
   text: string;
 };
+
+export type SelectedArticleResponse = {
+  id: number;
+  title: string;
+  url: string;
+  image_url: string;
+  news_site: string;
+  summary: string;
+  published_at: string;
+  updated_at: string;
+  featured: boolean;
+  launches: [];
+  events: [];
+};

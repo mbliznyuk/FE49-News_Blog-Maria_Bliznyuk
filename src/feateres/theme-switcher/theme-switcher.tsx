@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { setIsDark } from "./theme-switcher.slice";
 
 export const ThemeSwitcher: React.FC = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    document.querySelector(".App")?.classList.toggle("dark", isDark);
-  }, [isDark]);
+  const isDark = useAppSelector((state) => state.themeSwitcher.isDark);
+  const dispatch = useAppDispatch();
 
   return (
     <SwitchWrapper>
@@ -17,7 +15,7 @@ export const ThemeSwitcher: React.FC = () => {
         id={"1"}
         type="checkbox"
         checked={isDark}
-        onChange={() => setIsDark(!isDark)}
+        onChange={() => dispatch(setIsDark(!isDark))}
       />
       <SwitchLabel className="switch-label" htmlFor={"1"}>
         <SwitchButton className="switch-button" />

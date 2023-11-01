@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hook";
 import { MainTemplate } from "../../ui/templates/main-template";
 import { Title } from "../../ui/title/title";
 import { getArticles } from "../../feateres/articles-list/articles-list.slice";
+import CircularColor from "../../ui/progreass/progress";
 
 export const ArticlesPage: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ export const ArticlesPage: React.FC = () => {
   }, [dispatch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return CircularColor();
   }
 
   if (articles.length === 0) {

@@ -9,7 +9,7 @@
   --input-clor: #fff;
   --input-accent-color:#6C1BDB;
   --background-secondary-button-color:#b7b7b7;
-  --background-burger-color: #fff;
+--icon-color:#d1d1d1;
   --text-primary-color: #313037;
   --text-secondary-button-color: #313037;
   --text-secondary-color: #606061;
@@ -31,7 +31,7 @@
     --text-accent-color:#6C1BDB;
     --text-secondary-button-color: #313037;
     --background-secondary-button-color:#b7b7b7;
-    --background-burger-color: #fff;
+    --icon-color:#c6c6c6;
     --text-primary-color: #FFFFFF;
     --text-secondary-color: #e0dfdf;
     --text-error-color: #FD3419;
