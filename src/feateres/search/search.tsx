@@ -2,12 +2,18 @@ import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import styled from "styled-components";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { reset, search } from "./search.slice";
+import { DropDown } from "./drop-down";
+import { Navigate } from "react-router-dom";
 
 type Props = {};
 
 export const Search: React.FC<Props> = () => {
   const [isSearchActive, setIsSearchActive] = useState<boolean>(false);
   const [searchedText, setSearchedText] = useState<string>("");
+  const dispatch = useAppDispatch();
+  const { searchedArticles } = useAppSelector(({ search }) => search);
 
   return (
     <RelativeContainer>
@@ -19,6 +25,14 @@ export const Search: React.FC<Props> = () => {
               value={searchedText}
               onChange={(event) => {
                 setSearchedText(event.currentTarget.value);
+                dispatch(search(event.currentTarget.value));
+              }}
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  <Navigate
+                    to={`/articles/searched/${event.currentTarget.value}`}
+                  />;
+                }
               }}
             ></SearchInput>
             <InputRightAction>
@@ -26,12 +40,18 @@ export const Search: React.FC<Props> = () => {
                 onClick={() => {
                   setSearchedText("");
                   setIsSearchActive(!isSearchActive);
+                  dispatch(reset());
                 }}
               >
                 <FontAwesomeIcon icon={faXmark} />
               </CloseInputIcon>
             </InputRightAction>
-            {}
+            {searchedText && (
+              <DropDown
+                articles={searchedArticles.results}
+                searchedString={searchedText}
+              ></DropDown>
+            )}
           </>
         ) : (
           <>
@@ -82,25 +102,19 @@ const SearchInput = styled.input`
   outline: none;
   box-sizing: border-box;
   border: none;
-  color: var(--text-primary-color);
+  padding-left: 15px;
+  color: var(--search-input-text-color);
   &::placeholder {
-    color: var(--text-secondary-color);
-    opacity: 0.9;
+    color: var(--search-input-text-color);
+    opacity: 0.8;
   }
 `;
 const CloseInputIcon = styled.div`
-  color: var(--text-primary-color);
+  color: var(--search-input-text-color);
   width: 10px;
   display: flex;
   align-items: center;
   padding-right: 10px;
   font-size: 16px;
   cursor: pointer;
-`;
-
-const SearchInputAlternative = styled.div`
-  width: 92%;
-  padding: 0 15px;
-  background-color: #2536a7;
-  border: none;
 `;

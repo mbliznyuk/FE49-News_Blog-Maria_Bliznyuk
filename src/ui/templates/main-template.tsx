@@ -49,11 +49,6 @@ const Main = styled.main`
   margin: auto;
 `;
 
-const BackLinkContainer = styled.div`
-  width: 100%;
-  text-align: start;
-`;
-
 const TitleContainer = styled.div`
   width: 100%;
   text-align: start;

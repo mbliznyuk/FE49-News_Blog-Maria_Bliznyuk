@@ -19,7 +19,7 @@ export const ArticlesPage: React.FC = () => {
   }
 
   if (articles.length === 0) {
-    return <div>No posts</div>;
+    return <div>No articles</div>;
   }
 
   return (

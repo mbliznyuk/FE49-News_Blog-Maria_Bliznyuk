@@ -1,19 +1,21 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@200;600&family=M+PLUS+1p:wght@500&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600&family=Space+Grotesk:wght@300;400&display=swap');
 
 .App {
   --header-color:#FFFFFF;
   --search-input-color: #EBEBEB;
+  --search-input-text-color: #313037;
   --background-primary-color: #F3F3F3;
   --button-primary-color: #6C1BDB;
   --buttun-accent-color:  #912EF2;
   --input-clor: #fff;
   --input-accent-color:#6C1BDB;
   --background-secondary-button-color:#b7b7b7;
---icon-color:#d1d1d1;
+
   --text-primary-color: #313037;
   --text-secondary-button-color: #313037;
   --text-secondary-color: #606061;
-  --text-hover-color:#2231AA;
+  --text-hover-color: #6C1BDB;
   --switcher-color:#313037  ;
   --text-error-color: #FD3419;
   --border-primary-color: #dfdfdf;
@@ -31,9 +33,11 @@
     --text-accent-color:#6C1BDB;
     --text-secondary-button-color: #313037;
     --background-secondary-button-color:#b7b7b7;
-    --icon-color:#c6c6c6;
+
+    --search-input-text-color: #313037;
     --text-primary-color: #FFFFFF;
     --text-secondary-color: #e0dfdf;
+    --text-hover-color: #6C1BDB;
     --text-error-color: #FD3419;
     --border-primary-color:#57565D;
     --article-card-color:#45444B;
