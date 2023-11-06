@@ -2,14 +2,14 @@ import { call, put, takeLatest } from "typed-redux-saga";
 import {
   AllArticlesResponse,
   AllArticlesResponseResult,
-  ArticleCardModel,
+  PostCardModel,
 } from "../../api/types";
 import { searchedArticlesApi } from "./api";
 import {
   getSearchedArticles,
   getSearchedArticlesFailure,
   getSearchedArticlesSuccess,
-} from "./search-result.slice";
+} from "./articles-search-result.slice";
 
 export function* getSearchedArticleSaga() {
   yield takeLatest(
@@ -38,7 +38,7 @@ export function* getSearchedArticleSaga() {
 
 function mergeArticles(
   articlesFromApi: AllArticlesResponseResult[]
-): ArticleCardModel[] {
+): PostCardModel[] {
   return articlesFromApi.map((element) => {
     return {
       id: element.id,

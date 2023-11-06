@@ -1,13 +1,16 @@
 import { styled } from "styled-components";
-import { ArticleCardModel } from "../../api/types";
-import { AtricleCard } from "../article-card/article-card";
+import { PostCardModel } from "../../api/types";
+import { PostCard } from "../post-card/post-card";
 import { Link } from "react-router-dom";
+import { ARTICLES } from "../tabs/tab.slice";
 
 type ArticlesProps = {
-  articles: ArticleCardModel[];
+  articles: PostCardModel[];
 };
 
-export const ArticlesList: React.FC<ArticlesProps> = ({ articles }) => {
+export const ArticlesSearchResultBody: React.FC<ArticlesProps> = ({
+  articles,
+}) => {
   const getArticleById = (id: number) =>
     articles.find((item) => item.id === id);
   return (
@@ -15,10 +18,11 @@ export const ArticlesList: React.FC<ArticlesProps> = ({ articles }) => {
       <ArticelsWrapper>
         {articles.map((element, id) => (
           <StyledLink key={id} to={`/articles/${element.id}`}>
-            <AtricleCard
+            <PostCard
               key={id}
-              articleCard={getArticleById(element.id)!}
-            ></AtricleCard>
+              postCard={getArticleById(element.id)!}
+              postType={ARTICLES}
+            ></PostCard>
           </StyledLink>
         ))}
       </ArticelsWrapper>

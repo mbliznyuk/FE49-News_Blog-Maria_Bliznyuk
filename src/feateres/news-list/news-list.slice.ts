@@ -1,25 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
 
-const articlesListSlice = createSlice({
-  name: "ArticlesList",
+const newsListSlice = createSlice({
+  name: "NewsList",
   initialState: {
-    articles: [] as PostCardModel[],
+    news: [] as PostCardModel[],
     isLoading: false,
     error: null as Error | null,
   },
   reducers: {
-    getArticles(state) {
+    getNews(state) {
       state.isLoading = true;
     },
-    getArticlesSuccess(
-      state,
-      action: { payload: { articles: PostCardModel[] } }
-    ) {
+    getNewsSuccess(state, action: { payload: { news: PostCardModel[] } }) {
       state.isLoading = false;
-      state.articles = action.payload.articles;
+      state.news = action.payload.news;
     },
-    getArticlesFailure(state, error: { payload: unknown }) {
+    getNewsFailure(state, error: { payload: unknown }) {
       state.isLoading = false;
       if (
         typeof error.payload === "object" &&
@@ -35,6 +32,6 @@ const articlesListSlice = createSlice({
 });
 
 export const {
-  actions: { getArticles, getArticlesSuccess, getArticlesFailure },
-  reducer: articlesReducer,
-} = articlesListSlice;
+  actions: { getNews, getNewsSuccess, getNewsFailure },
+  reducer: newsReducer,
+} = newsListSlice;

@@ -1,17 +1,16 @@
 import moment from "moment";
-import { useState } from "react";
 import { styled } from "styled-components";
-import { ArticleCardModel } from "../../api/types";
-import { isFavorided, toggle } from "./favorites";
+import { PostCardModel } from "../../api/types";
 import { AtricleCardBookmark } from "./bookmark";
+import { TabId } from "../tabs/tab";
+import { ARTICLES } from "../tabs/tab.slice";
 
-type ArticleCardProps = {
-  articleCard: ArticleCardModel;
+type PostCardProps = {
+  postCard: PostCardModel;
+  postType: TabId;
 };
 
-export const AtricleCard: React.FC<ArticleCardProps> = ({ articleCard }) => {
-  // const [isFavorite, setIsFavorite] = useState(isFavorided(articleCard.id));
-  console.log(articleCard.id);
+export const PostCard: React.FC<PostCardProps> = ({ postCard, postType }) => {
   return (
     <ArticleWrapper>
       <CardImageWrapper
@@ -20,15 +19,14 @@ export const AtricleCard: React.FC<ArticleCardProps> = ({ articleCard }) => {
           event.preventDefault();
         }}
       >
-        <img src={articleCard.image_url} alt="#"></img>
+        <img src={postCard.image_url} alt="#"></img>
       </CardImageWrapper>
-      <PostCardDate>
-        {moment(articleCard.published_at).format("LL")}
-      </PostCardDate>
-      <PostCardTitle>{articleCard.title}</PostCardTitle>
+      <PostCardDate>{moment(postCard.published_at).format("LL")}</PostCardDate>
+      <PostCardTitle>{postCard.title}</PostCardTitle>
       <IconWrapper>
-        {" "}
-        <AtricleCardBookmark articleCard={articleCard}></AtricleCardBookmark>
+        {postType === ARTICLES && (
+          <AtricleCardBookmark articleCard={postCard}></AtricleCardBookmark>
+        )}
       </IconWrapper>
     </ArticleWrapper>
   );

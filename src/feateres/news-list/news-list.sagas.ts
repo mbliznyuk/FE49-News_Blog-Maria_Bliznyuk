@@ -1,36 +1,26 @@
 import { call, put, takeLatest } from "typed-redux-saga";
 import {
-  AllArticlesResponse,
-  AllArticlesResponseResult,
-  PostCardModel,
+  AllNewsResponse,
+  AllNewsResponseResult,
+  NewsCardModel,
 } from "../../api/types";
-import {
-  getArticles,
-  getArticlesFailure,
-  getArticlesSuccess,
-} from "./articles-list.slice";
-import { articlesApi } from "./api";
+import { newsApi } from "./api";
+import { getNews, getNewsFailure, getNewsSuccess } from "./news-list.slice";
 
-export function* getArticlesSaga() {
-  yield takeLatest(getArticles, function* getArticlesHandler() {
-    const response: AllArticlesResponse = yield* call(
-      articlesApi.getAllArticles
-    );
+export function* getNewsSaga() {
+  yield takeLatest(getNews, function* getNewsHandler() {
+    const response: AllNewsResponse = yield* call(newsApi.getAllNews);
 
     if (response) {
-      const mergedArticles = mergeArticles(response.results);
-      yield put(getArticlesSuccess({ articles: mergedArticles }));
+      const mergedNews = mergeNews(response.results);
+      yield put(getNewsSuccess({ news: mergedNews }));
     } else {
-      yield put(
-        getArticlesFailure({ error: "Error while requesting articles" })
-      );
+      yield put(getNewsFailure({ error: "Error while requesting news" }));
     }
   });
 }
 
-function mergeArticles(
-  articlesFromApi: AllArticlesResponseResult[]
-): PostCardModel[] {
+function mergeNews(articlesFromApi: AllNewsResponseResult[]): NewsCardModel[] {
   return articlesFromApi.map((element) => {
     return {
       id: element.id,

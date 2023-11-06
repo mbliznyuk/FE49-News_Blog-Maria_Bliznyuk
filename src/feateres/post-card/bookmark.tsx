@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { styled } from "styled-components";
-import { ArticleCardModel } from "../../api/types";
+import { PostCardModel } from "../../api/types";
 import { isFavorided, toggle } from "./favorites";
 import React from "react";
 
 type ArticleCardProps = {
-  articleCard: ArticleCardModel;
+  articleCard: PostCardModel;
 };
 
 export const AtricleCardBookmark: React.FC<ArticleCardProps> = ({

@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { reset, search } from "./search.slice";
 import { DropDown } from "./drop-down";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -14,6 +14,7 @@ export const Search: React.FC<Props> = () => {
   const [searchedText, setSearchedText] = useState<string>("");
   const dispatch = useAppDispatch();
   const { searchedArticles } = useAppSelector(({ search }) => search);
+  const navigate = useNavigate();
 
   return (
     <RelativeContainer>
@@ -29,9 +30,8 @@ export const Search: React.FC<Props> = () => {
               }}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  <Navigate
-                    to={`/articles/searched/${event.currentTarget.value}`}
-                  />;
+                  console.log("title");
+                  navigate(`/articles/searched/${searchedText}`);
                 }
               }}
             ></SearchInput>

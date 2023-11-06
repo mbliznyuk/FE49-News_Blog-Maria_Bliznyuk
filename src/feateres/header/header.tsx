@@ -10,7 +10,7 @@ export const Header: React.FC<Props> = () => {
   return (
     <>
       <HeaderWrapper>
-        <StyledLink to={"/articles"}>
+        <StyledLink to={"/"}>
           <Logo>
             <ReactLogo />
           </Logo>

@@ -1,12 +1,14 @@
 import { styled } from "styled-components";
-import { ArticleCardModel } from "../../api/types";
-import { AtricleCardBookmark } from "../article-card/bookmark";
+import { PostCardModel } from "../../api/types";
+import { AtricleCardBookmark } from "../post-card/bookmark";
 
 type SelectedPostProps = {
-  article: ArticleCardModel;
+  post: PostCardModel;
 };
 
-export const SelectedArticle: React.FC<SelectedPostProps> = ({ article }) => {
+export const SelectedPost: React.FC<SelectedPostProps> = ({
+  post: article,
+}) => {
   return (
     <PostWrapper>
       <ArticleImageWrapper>

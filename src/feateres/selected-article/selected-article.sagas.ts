@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "typed-redux-saga";
-import { ArticleCardModel, SelectedArticleResponse } from "../../api/types";
+import { PostCardModel, SelectedArticleResponse } from "../../api/types";
 
 import {
   getSelectedArticle,
@@ -33,9 +33,7 @@ export function* getSelectedArticleSaga() {
   );
 }
 
-function mergeArticle(
-  articlesFromApi: SelectedArticleResponse
-): ArticleCardModel {
+function mergeArticle(articlesFromApi: SelectedArticleResponse): PostCardModel {
   return {
     id: articlesFromApi.id,
     title: articlesFromApi.title,

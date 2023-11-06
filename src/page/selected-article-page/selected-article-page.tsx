@@ -1,7 +1,7 @@
 import { Navigate, useParams } from "react-router-dom";
 import { BackLink } from "../../feateres/back-link/back-link";
 import { Header } from "../../feateres/header/header";
-import { SelectedArticle } from "../../feateres/selected-article/selected-article";
+import { SelectedPost } from "../../feateres/selected-article/selected-article";
 
 import { SecondaryTemplate } from "../../ui/templates/secondary-template";
 import { Title } from "../../ui/title/title";
@@ -11,18 +11,18 @@ import { getSelectedArticle } from "../../feateres/selected-article/selected-art
 import CircularColor from "../../ui/progreass/progress";
 
 export const SelectedArticlePge: React.FC = () => {
-  const { articleId } = useParams();
+  const { postId } = useParams();
   const dispatch = useAppDispatch();
   const { selectedArticle, isLoading } = useAppSelector(
     ({ selectedArticle }) => selectedArticle
   );
 
   useEffect(() => {
-    dispatch(getSelectedArticle({ articleId: articleId! }));
+    dispatch(getSelectedArticle({ articleId: postId! }));
     // dispatch(getRecommendedArticles()); // TODO implement
-  }, [dispatch, articleId]);
+  }, [dispatch, postId]);
 
-  if (!Number.isFinite(Number(articleId))) {
+  if (!Number.isFinite(Number(postId))) {
     return <Navigate to={"/"} />;
   }
 
@@ -39,7 +39,7 @@ export const SelectedArticlePge: React.FC = () => {
       header={<Header></Header>}
       backlink={<BackLink></BackLink>}
       title={<Title>{selectedArticle.title}</Title>}
-      body={<SelectedArticle article={selectedArticle}></SelectedArticle>}
+      body={<SelectedPost post={selectedArticle}></SelectedPost>}
     />
   );
 };

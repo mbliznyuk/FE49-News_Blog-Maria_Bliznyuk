@@ -1,15 +1,14 @@
 import { Navigate, useParams } from "react-router-dom";
+import { ArticlesSearchResultBody } from "../../feateres/articles-search-result-body/articles-search-result-body";
 import { Header } from "../../feateres/header/header";
-import { SearchResaultBody } from "../../feateres/search-result-body/search-result-body";
 
 import { MainTemplate } from "../../ui/templates/main-template";
 
-import { Title } from "../../ui/title/title";
 import { useEffect } from "react";
-import { getSelectedArticle } from "../../feateres/selected-article/selected-article.slice";
+import { getSearchedArticles } from "../../feateres/articles-search-result-body/articles-search-result.slice";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import CircularColor from "../../ui/progreass/progress";
-import { getSearchedArticles } from "../../feateres/search-result-body/search-result.slice";
+import { Title } from "../../ui/title/title";
 
 export const SearchResultPage: React.FC = () => {
   const { searchedTitle } = useParams();
@@ -38,7 +37,11 @@ export const SearchResultPage: React.FC = () => {
     <MainTemplate
       header={<Header></Header>}
       title={<Title>{`Search results '${searchedTitle}'`}</Title>}
-      body={<SearchResaultBody articles={searchedArticles}></SearchResaultBody>}
+      body={
+        <ArticlesSearchResultBody
+          articles={searchedArticles}
+        ></ArticlesSearchResultBody>
+      }
     />
   );
 };

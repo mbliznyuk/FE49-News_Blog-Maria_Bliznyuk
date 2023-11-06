@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticleCardModel } from "../../api/types";
+import { PostCardModel } from "../../api/types";
 
 export type SearchedTitle = {
   searchedTitle: string;
@@ -8,7 +8,7 @@ export type SearchedTitle = {
 const SearchResultSlice = createSlice({
   name: "SearchResult",
   initialState: {
-    searchedArticles: [] as ArticleCardModel[],
+    searchedArticles: [] as PostCardModel[],
     isLoading: true,
     error: null as Error | null,
   },
@@ -18,7 +18,7 @@ const SearchResultSlice = createSlice({
     },
     getSearchedArticlesSuccess(
       state,
-      action: { payload: { searchedArticles: ArticleCardModel[] } }
+      action: { payload: { searchedArticles: PostCardModel[] } }
     ) {
       state.isLoading = false;
       state.searchedArticles = action.payload.searchedArticles;

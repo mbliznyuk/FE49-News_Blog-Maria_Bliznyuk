@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { ArticleCardModel } from "../../api/types";
+import { PostCardModel } from "../../api/types";
 
 export type SelectedArticlePayload = {
   articleId: string;
@@ -7,7 +7,7 @@ export type SelectedArticlePayload = {
 const selectedArticelSlice = createSlice({
   name: "SelectedArticle",
   initialState: {
-    selectedArticle: {} as ArticleCardModel,
+    selectedArticle: {} as PostCardModel,
     isLoading: true,
     error: null as Error | null,
   },
@@ -17,7 +17,7 @@ const selectedArticelSlice = createSlice({
     },
     getSelectedArticleSuccess(
       state,
-      action: { payload: { selectedArticle: ArticleCardModel } }
+      action: { payload: { selectedArticle: PostCardModel } }
     ) {
       state.isLoading = false;
       state.selectedArticle = action.payload.selectedArticle;
