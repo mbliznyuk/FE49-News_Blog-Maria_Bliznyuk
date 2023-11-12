@@ -3,14 +3,23 @@ import { PostCardModel } from "../../api/types";
 import { PostCard } from "../post-card/post-card"; //TODO rename
 import { Link } from "react-router-dom";
 import { TabId } from "../tabs/tab";
+import CircularColor from "../../ui/progreass/progress";
 
 type PostsProps = {
   posts: PostCardModel[];
   postType: TabId;
+  isLoading: boolean;
 };
 
-export const PostsList: React.FC<PostsProps> = ({ posts, postType }) => {
+export const PostsList: React.FC<PostsProps> = ({
+  posts,
+  postType,
+  isLoading,
+}) => {
   const getPostById = (id: number) => posts.find((item) => item.id === id);
+  if (isLoading) {
+    return CircularColor();
+  }
   return (
     <>
       <PostsWrapper>
@@ -29,7 +38,7 @@ export const PostsList: React.FC<PostsProps> = ({ posts, postType }) => {
 };
 
 const PostsWrapper = styled.div`
-  width: 80%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;

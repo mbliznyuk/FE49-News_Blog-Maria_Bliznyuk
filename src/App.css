@@ -8,13 +8,15 @@
   --background-primary-color: #F3F3F3;
   --button-primary-color: #6C1BDB;
   --buttun-accent-color:  #912EF2;
+  --filter-button-color:rgba(49, 48, 55, 0.1);
   --input-clor: #fff;
   --input-accent-color:#6C1BDB;
   --background-secondary-button-color:#b7b7b7;
-
+  --text-accent-color:#FFFFFF;
   --text-primary-color: #313037;
   --text-secondary-button-color: #313037;
   --text-secondary-color: #606061;
+
   --text-hover-color: #6C1BDB;
   --switcher-color:#313037  ;
   --text-error-color: #FD3419;
@@ -30,10 +32,10 @@
     --buttun-accent-color:  #912EF2;
     --input-clor:#57565D;
     --switcher-color:#6C1BDB;
-    --text-accent-color:#6C1BDB;
+    --text-accent-color:#FFFFFF;
     --text-secondary-button-color: #313037;
     --background-secondary-button-color:#b7b7b7;
-
+    --filter-button-color:rgba(255, 255, 255, 0.1);
     --search-input-text-color: #313037;
     --text-primary-color: #FFFFFF;
     --text-secondary-color: #e0dfdf;

@@ -8,8 +8,11 @@ import { newsApi } from "./api";
 import { getNews, getNewsFailure, getNewsSuccess } from "./news-list.slice";
 
 export function* getNewsSaga() {
-  yield takeLatest(getNews, function* getNewsHandler() {
-    const response: AllNewsResponse = yield* call(newsApi.getAllNews);
+  yield takeLatest(getNews, function* getNewsHandler({ payload }) {
+    const response: AllNewsResponse = yield* call(
+      newsApi.getAllNews,
+      payload.period
+    );
 
     if (response) {
       const mergedNews = mergeNews(response.results);

@@ -1,11 +1,11 @@
-const LIKED_ARTICLE_KEY = "liked_articles_ids";
+const FAVORITE_ARTICLE_KEY = "favorite_articles_ids";
 
 export function setFavorites(payload: number[]): void {
-  localStorage.setItem(LIKED_ARTICLE_KEY, JSON.stringify(payload));
+  localStorage.setItem(FAVORITE_ARTICLE_KEY, JSON.stringify(payload));
 }
 
 export function getFavorites(): number[] {
-  const value = localStorage.getItem(LIKED_ARTICLE_KEY);
+  const value = localStorage.getItem(FAVORITE_ARTICLE_KEY);
   if (value) {
     return JSON.parse(value);
   }

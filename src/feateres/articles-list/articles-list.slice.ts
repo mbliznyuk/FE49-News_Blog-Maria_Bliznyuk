@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
+import { FilterButtonId } from "../date-filter-button/date-filter-button";
+import { SortOptionId } from "../sort-menu/sort-menu";
 
 const articlesListSlice = createSlice({
   name: "ArticlesList",
@@ -9,7 +11,10 @@ const articlesListSlice = createSlice({
     error: null as Error | null,
   },
   reducers: {
-    getArticles(state) {
+    getArticles(
+      state,
+      action: { payload: { period: FilterButtonId; sortBy: SortOptionId } }
+    ) {
       state.isLoading = true;
     },
     getArticlesSuccess(

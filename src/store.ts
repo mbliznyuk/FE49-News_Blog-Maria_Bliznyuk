@@ -8,6 +8,9 @@ import { searchReducer } from "./feateres/search/search.slice";
 import { searchResultReducer } from "./feateres/articles-search-result-body/articles-search-result.slice";
 import { newsReducer } from "./feateres/news-list/news-list.slice";
 import { TabsSliceReducer } from "./feateres/tabs/tab.slice";
+import { FilterButtonSliceReducer } from "./feateres/date-filter-button/date-filter-button.slice";
+import { favoriteReducer } from "./feateres/post-card/favorites.slice";
+import { SortMenuReducer } from "./feateres/sort-menu/sort-menu.slice";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -20,6 +23,9 @@ export const store = configureStore({
     search: searchReducer,
     searchedArticles: searchResultReducer,
     tabs: TabsSliceReducer,
+    filterButton: FilterButtonSliceReducer,
+    favorite: favoriteReducer,
+    sortMenu: SortMenuReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleware),

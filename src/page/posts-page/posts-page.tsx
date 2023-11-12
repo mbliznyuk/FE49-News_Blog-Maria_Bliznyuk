@@ -7,22 +7,25 @@ import { useAppDispatch, useAppSelector } from "../../hook";
 import CircularColor from "../../ui/progreass/progress";
 import { MainTemplate } from "../../ui/templates/main-template";
 import { Title } from "../../ui/title/title";
+import { WEEK } from "../../feateres/date-filter-button/date-filter-button.slice";
+import { Stack, CircularProgress } from "@mui/material";
 
 export const PostsPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const articlesSelector = useAppSelector(({ articles }) => articles);
   const newsSelector = useAppSelector(({ news }) => news);
   useEffect(() => {
-    dispatch(getArticles());
+    dispatch(
+      getArticles({
+        period: WEEK,
+        sortBy: "PUBLISHED_AT",
+      })
+    );
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getNews());
+    dispatch(getNews({ period: WEEK }));
   }, [dispatch]);
-
-  if (articlesSelector.isLoading || newsSelector.isLoading) {
-    return CircularColor();
-  }
 
   return (
     <MainTemplate
@@ -32,6 +35,7 @@ export const PostsPage: React.FC = () => {
         <PostsPageBody
           articles={articlesSelector.articles}
           news={newsSelector.news}
+          isLoading={articlesSelector.isLoading || newsSelector.isLoading}
         />
       }
     />

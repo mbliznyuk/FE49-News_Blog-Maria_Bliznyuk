@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
+import { FilterButtonId } from "../date-filter-button/date-filter-button";
 
 const newsListSlice = createSlice({
   name: "NewsList",
@@ -9,7 +10,7 @@ const newsListSlice = createSlice({
     error: null as Error | null,
   },
   reducers: {
-    getNews(state) {
+    getNews(state, action: { payload: { period: FilterButtonId } }) {
       state.isLoading = true;
     },
     getNewsSuccess(state, action: { payload: { news: PostCardModel[] } }) {

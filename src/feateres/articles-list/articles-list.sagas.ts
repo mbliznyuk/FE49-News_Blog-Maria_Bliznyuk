@@ -12,9 +12,11 @@ import {
 import { articlesApi } from "./api";
 
 export function* getArticlesSaga() {
-  yield takeLatest(getArticles, function* getArticlesHandler() {
+  yield takeLatest(getArticles, function* getArticlesHandler({ payload }) {
     const response: AllArticlesResponse = yield* call(
-      articlesApi.getAllArticles
+      articlesApi.getAllArticles,
+      payload.period,
+      payload.sortBy
     );
 
     if (response) {
