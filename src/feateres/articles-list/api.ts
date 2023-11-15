@@ -10,15 +10,24 @@ import {
 } from "../date-filter-button/date-filter-button.slice";
 import { SortOptionId } from "../sort-menu/sort-menu";
 
+export interface PostGetRequestParameters {
+  period?: FilterButtonId;
+  sortBy?: SortOptionId;
+  limit?: number;
+  offset?: number;
+}
+
 export const articlesApi = {
   getAllArticles: (
-    period: FilterButtonId,
-    sortBy: SortOptionId
+    parameters: PostGetRequestParameters
   ): Promise<AllArticlesResponse> => {
-    const minimalDate = convertPeriodToMinimumIsoDate(period);
-    const fieldForSort = getFieldName(sortBy);
+    const minimalDate = convertPeriodToMinimumIsoDate(parameters.period);
+    const fieldForSort = getFieldName(parameters.sortBy);
+
     return fetch(
-      `${baseUrl}articles?limit=12&published_at_gte=${minimalDate}&ordering=${fieldForSort}`,
+      `${baseUrl}articles?limit=${parameters.limit || 12}&offset=${
+        parameters.offset || 0
+      }&published_at_gte=${minimalDate}&ordering=${fieldForSort}`,
       {
         method: "GET",
         headers: {
@@ -34,7 +43,7 @@ export const articlesApi = {
   },
 };
 
-const getAmountOfDays = (period: FilterButtonId): number => {
+const getAmountOfDays = (period?: FilterButtonId): number => {
   switch (period) {
     case DAY:
       return 1;
@@ -49,7 +58,7 @@ const getAmountOfDays = (period: FilterButtonId): number => {
   }
 };
 
-const getFieldName = (sortBy: SortOptionId): string => {
+export const getFieldName = (sortBy?: SortOptionId): string => {
   switch (sortBy) {
     case "TITLE":
       return "title";
@@ -60,6 +69,6 @@ const getFieldName = (sortBy: SortOptionId): string => {
   }
 };
 
-export function convertPeriodToMinimumIsoDate(period: FilterButtonId): string {
+export function convertPeriodToMinimumIsoDate(period?: FilterButtonId): string {
   return moment().subtract(getAmountOfDays(period), "d").toISOString();
 }

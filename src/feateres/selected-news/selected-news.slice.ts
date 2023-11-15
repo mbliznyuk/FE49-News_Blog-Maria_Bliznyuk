@@ -1,27 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
-import { FilterButtonId } from "../date-filter-button/date-filter-button";
-import { SortOptionId } from "../sort-menu/sort-menu";
 
-const newsListSlice = createSlice({
-  name: "NewsList",
+export type SelectedNewsPayload = {
+  newsId: string;
+};
+const selectedNewsSlice = createSlice({
+  name: "SelectedNews",
   initialState: {
-    news: [] as PostCardModel[],
-    isLoading: false,
+    selectedNews: {} as PostCardModel,
+    isLoading: true,
     error: null as Error | null,
   },
   reducers: {
-    getNews(
-      state,
-      action: { payload: { period: FilterButtonId; sortBy: SortOptionId } }
-    ) {
+    getSelectedNews(state, action: { payload: SelectedNewsPayload }) {
       state.isLoading = true;
     },
-    getNewsSuccess(state, action: { payload: { news: PostCardModel[] } }) {
+    getSelectedNewsSuccess(
+      state,
+      action: { payload: { selectedNews: PostCardModel } }
+    ) {
       state.isLoading = false;
-      state.news = action.payload.news;
+      state.selectedNews = action.payload.selectedNews;
     },
-    getNewsFailure(state, error: { payload: unknown }) {
+    getSelectedNewsFailure(state, error: { payload: unknown }) {
       state.isLoading = false;
       if (
         typeof error.payload === "object" &&
@@ -37,6 +38,6 @@ const newsListSlice = createSlice({
 });
 
 export const {
-  actions: { getNews, getNewsSuccess, getNewsFailure },
-  reducer: newsReducer,
-} = newsListSlice;
+  actions: { getSelectedNews, getSelectedNewsSuccess, getSelectedNewsFailure },
+  reducer: selectedNewsReducer,
+} = selectedNewsSlice;

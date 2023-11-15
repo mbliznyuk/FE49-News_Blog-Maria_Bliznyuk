@@ -4,6 +4,7 @@ import { PostCard } from "../post-card/post-card"; //TODO rename
 import { Link } from "react-router-dom";
 import { TabId } from "../tabs/tab";
 import CircularColor from "../../ui/progreass/progress";
+import { ARTICLES, NEWS } from "../tabs/tab.slice";
 
 type PostsProps = {
   posts: PostCardModel[];
@@ -20,11 +21,23 @@ export const PostsList: React.FC<PostsProps> = ({
   if (isLoading) {
     return CircularColor();
   }
+
+  const getUrlPrefix = (): string => {
+    switch (postType) {
+      case ARTICLES:
+        return "articles";
+      case NEWS:
+        return "blogs";
+      default:
+        return "articles";
+    }
+  };
+
   return (
     <>
       <PostsWrapper>
         {posts.map((element, id) => (
-          <StyledLink key={id} to={`/posts/${element.id}`}>
+          <StyledLink key={id} to={`/${getUrlPrefix()}/${element.id}`}>
             <PostCard
               key={id}
               postCard={getPostById(element.id)!}

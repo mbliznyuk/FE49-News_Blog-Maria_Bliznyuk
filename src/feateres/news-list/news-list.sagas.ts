@@ -6,13 +6,14 @@ import {
 } from "../../api/types";
 import { newsApi } from "./api";
 import { getNews, getNewsFailure, getNewsSuccess } from "./news-list.slice";
+import { PostGetRequestParameters } from "../articles-list/api";
 
 export function* getNewsSaga() {
   yield takeLatest(getNews, function* getNewsHandler({ payload }) {
-    const response: AllNewsResponse = yield* call(
-      newsApi.getAllNews,
-      payload.period
-    );
+    const response: AllNewsResponse = yield* call(newsApi.getAllNews, {
+      period: payload.period,
+      sortBy: payload.sortBy,
+    } as PostGetRequestParameters);
 
     if (response) {
       const mergedNews = mergeNews(response.results);

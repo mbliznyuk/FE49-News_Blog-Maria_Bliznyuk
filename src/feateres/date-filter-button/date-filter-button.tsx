@@ -49,7 +49,7 @@ export const FilterButton: React.FC<FilterrButtonProps> = (
           onClick={() => {
             dispatch(setActiveFilterButton(element.id));
             dispatch(getArticles({ period: element.id, sortBy: sortActiveId }));
-            dispatch(getNews({ period: element.id }));
+            dispatch(getNews({ period: element.id, sortBy: sortActiveId }));
           }}
         >
           {element.name}

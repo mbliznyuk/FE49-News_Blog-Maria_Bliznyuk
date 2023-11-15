@@ -9,14 +9,16 @@ import {
   getArticlesFailure,
   getArticlesSuccess,
 } from "./articles-list.slice";
-import { articlesApi } from "./api";
+import { PostGetRequestParameters, articlesApi } from "./api";
 
 export function* getArticlesSaga() {
   yield takeLatest(getArticles, function* getArticlesHandler({ payload }) {
     const response: AllArticlesResponse = yield* call(
       articlesApi.getAllArticles,
-      payload.period,
-      payload.sortBy
+      {
+        period: payload.period,
+        sortBy: payload.sortBy,
+      } as PostGetRequestParameters
     );
 
     if (response) {

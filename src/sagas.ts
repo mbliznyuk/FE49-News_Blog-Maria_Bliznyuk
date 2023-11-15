@@ -5,14 +5,20 @@ import { getNewsSaga } from "./feateres/news-list/news-list.sagas";
 import { searchSaga } from "./feateres/search/search.sagas";
 import { getSelectedArticleSaga } from "./feateres/selected-article/selected-article.sagas";
 import { themeSwitcherSaga } from "./feateres/theme-switcher/theme-switcher.sagas";
+import { getRecommendedArticlesSaga } from "./feateres/recommended-posts/recommended-articles/recommended-articles.sagas";
+import { getSelectedNewsSaga } from "./feateres/selected-news/selected-news.sagas";
+import { getRecommendedNewsSaga } from "./feateres/recommended-posts/recommended-news/recommended-news.sagas";
 
 export function* rootSaga() {
   yield all([
     getArticlesSaga(),
+    getRecommendedArticlesSaga(),
     getNewsSaga(),
+    getRecommendedNewsSaga(),
     getSelectedArticleSaga(),
     themeSwitcherSaga(),
     searchSaga(),
     getSearchedArticleSaga(),
+    getSelectedNewsSaga(),
   ]);
 }

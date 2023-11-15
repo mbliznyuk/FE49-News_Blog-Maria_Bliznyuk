@@ -4,7 +4,7 @@ import { SortOptionId } from "./sort-menu";
 const SortMenuSlice = createSlice({
   name: "SortMenuSlice",
   initialState: {
-    activeSortOption: "PUBLISHED_AT" as SortOptionId,
+    activeSortOption: "TITLE" as SortOptionId,
   },
   reducers: {
     setActiveSortOption(state, action: { payload: SortOptionId }) {

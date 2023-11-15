@@ -28,7 +28,7 @@ export default function TitleSelect() {
     dispatch(setActiveSortOption(eventTartgetValue));
     console.log(eventTartgetValue);
     dispatch(getArticles({ period: period, sortBy: eventTartgetValue }));
-    dispatch(getNews({ period: period }));
+    dispatch(getNews({ period: period, sortBy: eventTartgetValue }));
   };
 
   return (

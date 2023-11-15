@@ -1,29 +1,28 @@
 import { styled } from "styled-components";
 import { PostCardModel } from "../../api/types";
-import { AtricleCardBookmark } from "../post-card/bookmark";
 import { PostsList } from "../posts-list/posts-list";
-import { ARTICLES } from "../tabs/tab.slice";
+import { NEWS } from "../tabs/tab.slice";
 
 type Props = {
-  article: PostCardModel;
-  recommendedArticles: PostCardModel[];
+  news: PostCardModel;
+  recommendedNews: PostCardModel[];
   isLoading: boolean;
 };
 
-export const SelectedArticle: React.FC<Props> = ({
-  recommendedArticles,
+export const SelectedNews: React.FC<Props> = ({
+  recommendedNews,
 
   isLoading,
 
-  article,
+  news,
 }) => {
   return (
     <PostWrapper>
       <PostImageWrapper>
-        <img src={article.image_url} alt="#"></img>
+        <img src={news.image_url} alt="#"></img>
       </PostImageWrapper>
       <PostTextWrapper>
-        <PostText>{article.text}</PostText>
+        <PostText>{news.text}</PostText>
       </PostTextWrapper>
       <PostCardIcons>
         <Icon>
@@ -32,26 +31,23 @@ export const SelectedArticle: React.FC<Props> = ({
         <Icon>
           <i className="fa-brands fa-twitter"></i>
         </Icon>
-        <Icon>
-          <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
-        </Icon>
       </PostCardIcons>
-      <RecommendedArticles>
+      <RecommendedNews>
         <PostsList
-          posts={recommendedArticles}
-          postType={ARTICLES}
+          posts={recommendedNews}
+          postType={NEWS}
           isLoading={isLoading}
         ></PostsList>
-      </RecommendedArticles>
+      </RecommendedNews>
     </PostWrapper>
   );
 };
-
-const RecommendedArticles = styled.div`
+const RecommendedNews = styled.div`
   width: 100%;
   border-top: 1px solid var(--border-primary-color);
   padding: 50px 0 15px 0;
 `;
+
 const PostWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -91,7 +87,6 @@ const PostCardIcons = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 160px;
-  margin-bottom: 30px;
 `;
 
 const Icon = styled.div`

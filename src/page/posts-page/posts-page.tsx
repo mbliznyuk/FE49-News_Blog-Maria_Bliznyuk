@@ -1,30 +1,36 @@
 import { useEffect } from "react";
 import { getArticles } from "../../feateres/articles-list/articles-list.slice";
+import { WEEK } from "../../feateres/date-filter-button/date-filter-button.slice";
 import { Header } from "../../feateres/header/header";
 import { getNews } from "../../feateres/news-list/news-list.slice";
 import { PostsPageBody } from "../../feateres/posts-page-body/posts-page-body";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import CircularColor from "../../ui/progreass/progress";
 import { MainTemplate } from "../../ui/templates/main-template";
 import { Title } from "../../ui/title/title";
-import { WEEK } from "../../feateres/date-filter-button/date-filter-button.slice";
-import { Stack, CircularProgress } from "@mui/material";
 
 export const PostsPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const articlesSelector = useAppSelector(({ articles }) => articles);
   const newsSelector = useAppSelector(({ news }) => news);
+  const sortMenuSelector = useAppSelector(({ sortMenu }) => sortMenu);
+  const periodSelector = useAppSelector(({ filterButton }) => filterButton);
+
   useEffect(() => {
     dispatch(
       getArticles({
-        period: WEEK,
-        sortBy: "PUBLISHED_AT",
+        period: periodSelector.activFilterButton,
+        sortBy: sortMenuSelector.activeSortOption,
       })
     );
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getNews({ period: WEEK }));
+    dispatch(
+      getNews({
+        period: periodSelector.activFilterButton,
+        sortBy: sortMenuSelector.activeSortOption,
+      })
+    );
   }, [dispatch]);
 
   return (

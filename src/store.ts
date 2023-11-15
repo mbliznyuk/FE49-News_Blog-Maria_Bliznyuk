@@ -11,14 +11,20 @@ import { TabsSliceReducer } from "./feateres/tabs/tab.slice";
 import { FilterButtonSliceReducer } from "./feateres/date-filter-button/date-filter-button.slice";
 import { favoriteReducer } from "./feateres/post-card/favorites.slice";
 import { SortMenuReducer } from "./feateres/sort-menu/sort-menu.slice";
+import { recommendedArticlesReducer } from "./feateres/recommended-posts/recommended-articles/recommended-articles.slice";
+import { recommendedNewsReducer } from "./feateres/recommended-posts/recommended-news/recommended-news.slice";
+import { selectedNewsReducer } from "./feateres/selected-news/selected-news.slice";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
 export const store = configureStore({
   reducer: {
     articles: articlesReducer,
+    recommendedArticles: recommendedArticlesReducer,
     news: newsReducer,
+    recommendedNews: recommendedNewsReducer,
     selectedArticle: selectedArticleReducer,
+    selectedNews: selectedNewsReducer,
     themeSwitcher: themeSwitcherReducer,
     search: searchReducer,
     searchedArticles: searchResultReducer,
