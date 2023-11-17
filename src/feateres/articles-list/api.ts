@@ -54,7 +54,7 @@ const getAmountOfDays = (period?: FilterButtonId): number => {
     case YEAR:
       return 365;
     default:
-      return 7;
+      return 365 * 5;
   }
 };
 

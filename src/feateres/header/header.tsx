@@ -3,10 +3,15 @@ import { UserNameLabel } from "../../ui/username-label/username-label";
 import { Search } from "../search/search";
 import { ReactComponent as ReactLogo } from "./Logo.svg";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { toggle } from "./is-burger-open.slice";
+import { BurgerMenu } from "../burger-menu/burger-menu";
 
 type Props = {};
 
 export const Header: React.FC<Props> = () => {
+  const dispatch = useAppDispatch();
+  const { isBurgerOpen } = useAppSelector((state) => state.burgerMenu);
   return (
     <>
       <HeaderWrapper>
@@ -17,8 +22,13 @@ export const Header: React.FC<Props> = () => {
         </StyledLink>
 
         <Search></Search>
-        <UserNameLabel username={"Maria Bliznyuk"}></UserNameLabel>
+        <div onClick={() => dispatch(toggle())}>
+          <UserNameLabel username={"Maria Bliznyuk"}></UserNameLabel>
+        </div>
       </HeaderWrapper>
+      <div style={{ display: isBurgerOpen ? "inherit" : "none" }}>
+        <BurgerMenu />
+      </div>
     </>
   );
 };

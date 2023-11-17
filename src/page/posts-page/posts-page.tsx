@@ -22,7 +22,7 @@ export const PostsPage: React.FC = () => {
         sortBy: sortMenuSelector.activeSortOption,
       })
     );
-  }, [dispatch]);
+  }, [dispatch, periodSelector, sortMenuSelector]);
 
   useEffect(() => {
     dispatch(
@@ -31,7 +31,7 @@ export const PostsPage: React.FC = () => {
         sortBy: sortMenuSelector.activeSortOption,
       })
     );
-  }, [dispatch]);
+  }, [dispatch, periodSelector, sortMenuSelector]);
 
   return (
     <MainTemplate

@@ -4,29 +4,30 @@ import {
   AllArticlesResponseResult,
   PostCardModel,
 } from "../../api/types";
+import { favoriteArticlesApi } from "./api";
 import {
-  getArticles,
-  getArticlesFailure,
-  getArticlesSuccess,
-} from "./articles-list.slice";
-import { PostGetRequestParameters, articlesApi } from "./api";
+  getFAvoriteArticlesFailure,
+  getFavoriteArticles,
+  getFsvoriteArticlesSuccess,
+} from "./favorite-articles.slice";
 
-export function* getArticlesSaga() {
-  yield takeLatest(getArticles, function* getArticlesHandler({ payload }) {
+export function* getFavoriteArticlesSaga() {
+  yield takeLatest(getFavoriteArticles, function* getFavoriteArticlesHandler() {
     const response: AllArticlesResponse = yield* call(
-      articlesApi.getAllArticles,
-      {
-        period: payload.period,
-        sortBy: payload.sortBy,
-      } as PostGetRequestParameters
+      favoriteArticlesApi.getFavoriteArticles
     );
+    console.log(response.results.map((element) => element.id));
     try {
       const mergedArticles = mergeArticles(response.results);
-      yield put(getArticlesSuccess({ articles: mergedArticles }));
+      yield put(
+        getFsvoriteArticlesSuccess({ favoriteArticles: mergedArticles })
+      );
     } catch (error) {
       console.log("error");
       yield put(
-        getArticlesFailure({ error: "Error while requesting articles" })
+        getFAvoriteArticlesFailure({
+          error: "Error while requesting favorite articles",
+        })
       );
     }
   });

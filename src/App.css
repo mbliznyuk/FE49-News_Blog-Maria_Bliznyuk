@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Inter:wght@200;600&family=M+PLUS+1p:wght@500&family=Open+Sans:wght@300;400;500;600;700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,600&family=Space+Grotesk:wght@300;400&display=swap');
 
 .App {
+  overflow-x: hidden;
   --header-color:#FFFFFF;
   --search-input-color: #EBEBEB;
   --search-input-text-color: #313037;
@@ -16,11 +17,11 @@
   --text-primary-color: #313037;
   --text-secondary-button-color: #313037;
   --text-secondary-color: #606061;
-
   --text-hover-color: #6C1BDB;
   --switcher-color:#313037  ;
   --text-error-color: #FD3419;
   --border-primary-color: #dfdfdf;
+  --border-secondary-color:#dfdfdf;
   --article-card-color:#FFFFFF;
 
   
@@ -42,6 +43,7 @@
     --text-hover-color: #6C1BDB;
     --text-error-color: #FD3419;
     --border-primary-color:#57565D;
+    --border-secondary-color:#888889;
     --article-card-color:#45444B;
   }
 }

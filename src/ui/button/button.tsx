@@ -55,15 +55,15 @@ const ButtonWrapper = styled.button<{
       }
       case "secondary": {
         return css`
-          background-color: var(--background-secondary-button-color);
-          color: var(--text-secondary-button-color);
+          background-color: var(--button-primary-color);
+          color: var(--text-accent-color);
           text-align: center;
           font-size: 20px;
           font-weight: 600;
           border-radius: 0;
           padding: 15px 10px;
           &:hover {
-            color: var(--background-accent-color);
+            background-color: var(--buttun-accent-color);
           }
         `;
       }

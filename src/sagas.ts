@@ -8,6 +8,7 @@ import { themeSwitcherSaga } from "./feateres/theme-switcher/theme-switcher.saga
 import { getRecommendedArticlesSaga } from "./feateres/recommended-posts/recommended-articles/recommended-articles.sagas";
 import { getSelectedNewsSaga } from "./feateres/selected-news/selected-news.sagas";
 import { getRecommendedNewsSaga } from "./feateres/recommended-posts/recommended-news/recommended-news.sagas";
+import { getFavoriteArticlesSaga } from "./feateres/favorite-articles-body/favorites-articles.sagas";
 
 export function* rootSaga() {
   yield all([
@@ -20,5 +21,6 @@ export function* rootSaga() {
     searchSaga(),
     getSearchedArticleSaga(),
     getSelectedNewsSaga(),
+    getFavoriteArticlesSaga(),
   ]);
 }

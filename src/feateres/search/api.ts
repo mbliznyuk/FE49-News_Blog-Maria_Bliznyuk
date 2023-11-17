@@ -3,7 +3,7 @@ import { AllArticlesResponse } from "../../api/types";
 
 export const searchsApi = {
   search: (search: string): Promise<AllArticlesResponse> => {
-    return fetch(baseUrl + `articles/?search=${search}`, {
+    return fetch(baseUrl + `articles/?title_contains=${search}`, {
       method: "GET",
       headers: {
         ...jsonContentTypeHeaders,
