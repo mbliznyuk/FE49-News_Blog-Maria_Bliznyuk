@@ -3,6 +3,7 @@ import { PostCardModel } from "../../api/types";
 import { AtricleCardBookmark } from "../post-card/bookmark";
 import { PostsList } from "../posts-list/posts-list";
 import { ARTICLES } from "../tabs/tab.slice";
+import { getLogin } from "../../api/local-storage-login";
 
 type Props = {
   article: PostCardModel;
@@ -32,9 +33,11 @@ export const SelectedArticle: React.FC<Props> = ({
         <Icon>
           <i className="fa-brands fa-twitter"></i>
         </Icon>
-        <Icon>
-          <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
-        </Icon>
+        {!!getLogin() && (
+          <Icon>
+            <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
+          </Icon>
+        )}
       </PostCardIcons>
       <RecommendedArticles>
         <PostsList
@@ -88,7 +91,7 @@ const PostImageWrapper = styled.div`
 
 const PostCardIcons = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   width: 160px;
   margin-bottom: 30px;
@@ -102,6 +105,7 @@ const Icon = styled.div`
   width: 50px;
   height: 30px;
   border-radius: 5px;
+  margin-right: 5px;
   background-color: var(--icon-color);
   transition: 0.8s;
   cursor: pointer;

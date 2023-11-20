@@ -9,6 +9,7 @@ import { getRecommendedArticlesSaga } from "./feateres/recommended-posts/recomme
 import { getSelectedNewsSaga } from "./feateres/selected-news/selected-news.sagas";
 import { getRecommendedNewsSaga } from "./feateres/recommended-posts/recommended-news/recommended-news.sagas";
 import { getFavoriteArticlesSaga } from "./feateres/favorite-articles-body/favorites-articles.sagas";
+import { authorisationSaga } from "./feateres/auth/authorisation.sagas";
 
 export function* rootSaga() {
   yield all([
@@ -22,5 +23,6 @@ export function* rootSaga() {
     getSearchedArticleSaga(),
     getSelectedNewsSaga(),
     getFavoriteArticlesSaga(),
+    authorisationSaga(),
   ]);
 }

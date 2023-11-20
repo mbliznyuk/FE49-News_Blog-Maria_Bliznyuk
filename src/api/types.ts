@@ -70,3 +70,13 @@ export type SelectedArticleResponse = {
   launches: [];
   events: [];
 };
+
+export type AuthorisationPayload = {
+  email: string;
+  password: string;
+};
+
+export type AuthorisationResponse = {
+  success: boolean;
+  login: string;
+};

@@ -16,6 +16,7 @@ import { recommendedNewsReducer } from "./feateres/recommended-posts/recommended
 import { selectedNewsReducer } from "./feateres/selected-news/selected-news.slice";
 import { burgerOpenreducer } from "./feateres/header/is-burger-open.slice";
 import { favoriteArticlesReducer } from "./feateres/favorite-articles-body/favorite-articles.slice";
+import { authorisationReducer } from "./feateres/auth/authorisation.slice";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -36,6 +37,7 @@ export const store = configureStore({
     fdvoriteArticles: favoriteArticlesReducer,
     sortMenu: SortMenuReducer,
     burgerMenu: burgerOpenreducer,
+    authorisation: authorisationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleware),

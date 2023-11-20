@@ -1,21 +1,29 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useAppDispatch } from "../../hook";
 import { Button } from "../../ui/button/button";
+import { toggle } from "../header/is-burger-open.slice";
+import { postAuthoriseSuccess } from "../auth/authorisation.slice";
 
 export const BurgerMenu: React.FC = ({}) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   return (
     <BurgerMenuWrapper>
       <StyledLink to={"/favorites"}>
         <MyFaforitesOption>My Favorites</MyFaforitesOption>
       </StyledLink>
 
-      <StyledLink to={"/sign-in"}>
-        <Button
-          variant={"secondary"}
-          children={"Log Out"}
-          // onClick={() => localStorage.clear()}
-        ></Button>
-      </StyledLink>
+      <Button
+        variant={"secondary"}
+        children={"Log Out"}
+        onClick={() => {
+          localStorage.removeItem("login");
+          dispatch(toggle());
+          dispatch(postAuthoriseSuccess());
+          navigate("/sign-in");
+        }}
+      ></Button>
     </BurgerMenuWrapper>
   );
 };
@@ -24,7 +32,7 @@ const StyledLink = styled(Link)`
   text-decoration: unset;
 `;
 const BurgerMenuWrapper = styled.div`
-  min-width: 175px;
+  width: 136.96px;
   min-height: 50dvh;
   background-color: var(--input-clor);
   z-index: 5;

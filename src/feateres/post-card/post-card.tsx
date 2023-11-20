@@ -4,6 +4,7 @@ import { PostCardModel } from "../../api/types";
 import { AtricleCardBookmark } from "./bookmark";
 import { TabId } from "../tabs/tab";
 import { ARTICLES } from "../tabs/tab.slice";
+import { getLogin } from "../../api/local-storage-login";
 
 type PostCardProps = {
   postCard: PostCardModel;
@@ -24,7 +25,7 @@ export const PostCard: React.FC<PostCardProps> = ({ postCard, postType }) => {
       <PostCardDate>{moment(postCard.published_at).format("LL")}</PostCardDate>
       <PostCardTitle>{postCard.title}</PostCardTitle>
       <IconWrapper>
-        {postType === ARTICLES && (
+        {postType === ARTICLES && getLogin() && (
           <AtricleCardBookmark articleCard={postCard}></AtricleCardBookmark>
         )}
       </IconWrapper>

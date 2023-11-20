@@ -2,16 +2,19 @@ import styled from "styled-components";
 import { UserNameLabel } from "../../ui/username-label/username-label";
 import { Search } from "../search/search";
 import { ReactComponent as ReactLogo } from "./Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { toggle } from "./is-burger-open.slice";
 import { BurgerMenu } from "../burger-menu/burger-menu";
+import { getLogin } from "../../api/local-storage-login";
 
 type Props = {};
 
 export const Header: React.FC<Props> = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { isBurgerOpen } = useAppSelector((state) => state.burgerMenu);
+  const username = getLogin();
   return (
     <>
       <HeaderWrapper>
@@ -22,8 +25,10 @@ export const Header: React.FC<Props> = () => {
         </StyledLink>
 
         <Search></Search>
-        <div onClick={() => dispatch(toggle())}>
-          <UserNameLabel username={"Maria Bliznyuk"}></UserNameLabel>
+        <div
+          onClick={() => (username ? dispatch(toggle()) : navigate("/sign-in"))}
+        >
+          <UserNameLabel username={username || ""}></UserNameLabel>
         </div>
       </HeaderWrapper>
       <div style={{ display: isBurgerOpen ? "inherit" : "none" }}>
@@ -54,5 +59,5 @@ const HeaderWrapper = styled.div`
   background-color: var(--header-color);
   height: 60px;
   display: flex;
-  position: relative;
+  /* position: relative; */
 `;
