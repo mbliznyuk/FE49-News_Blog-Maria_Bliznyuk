@@ -2,10 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
 import { FilterButtonId } from "../date-filter-button/date-filter-button";
 import { SortOptionId } from "../sort-menu/sort-menu";
+import { DEFAULT_LIMIT } from "../articles-list/api";
 
 const newsListSlice = createSlice({
   name: "NewsList",
   initialState: {
+    newsTotalPages: 1,
     news: [] as PostCardModel[],
     isLoading: false,
     error: null as Error | null,
@@ -17,9 +19,13 @@ const newsListSlice = createSlice({
     ) {
       state.isLoading = true;
     },
-    getNewsSuccess(state, action: { payload: { news: PostCardModel[] } }) {
+    getNewsSuccess(
+      state,
+      action: { payload: { news: PostCardModel[]; count: number } }
+    ) {
       state.isLoading = false;
       state.news = action.payload.news;
+      state.newsTotalPages = Math.ceil(action.payload.count / DEFAULT_LIMIT);
     },
     getNewsFailure(state, error: { payload: unknown }) {
       state.isLoading = false;

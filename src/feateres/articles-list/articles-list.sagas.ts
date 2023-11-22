@@ -22,9 +22,11 @@ export function* getArticlesSaga() {
     );
     try {
       const mergedArticles = mergeArticles(response.results);
-      yield put(getArticlesSuccess({ articles: mergedArticles }));
+      yield put(
+        getArticlesSuccess({ articles: mergedArticles, count: response.count })
+      );
     } catch (error) {
-      console.log("error");
+      console.error("error");
       yield put(
         getArticlesFailure({ error: "Error while requesting articles" })
       );

@@ -24,8 +24,6 @@ export function* getRecommendedNewsSaga() {
     } as PostGetRequestParameters);
 
     if (response) {
-      console.log(response);
-      console.log("saga recommended newsApi");
       const mergedNews = mergeNews(response.results);
       yield put(getRecommendedNewsSuccess({ recommendedNews: mergedNews }));
     } else {

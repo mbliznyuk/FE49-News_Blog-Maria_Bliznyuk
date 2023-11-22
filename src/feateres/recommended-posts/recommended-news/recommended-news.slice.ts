@@ -11,7 +11,6 @@ const recommendedNewsSlice = createSlice({
   reducers: {
     getRecommendedNews(state) {
       state.isLoading = true;
-      console.log("slice recommended news");
     },
     getRecommendedNewsSuccess(
       state,

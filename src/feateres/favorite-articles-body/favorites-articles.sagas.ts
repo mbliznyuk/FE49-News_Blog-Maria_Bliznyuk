@@ -16,14 +16,13 @@ export function* getFavoriteArticlesSaga() {
     const response: AllArticlesResponse = yield* call(
       favoriteArticlesApi.getFavoriteArticles
     );
-    console.log(response.results.map((element) => element.id));
     try {
       const mergedArticles = mergeArticles(response.results);
       yield put(
         getFsvoriteArticlesSuccess({ favoriteArticles: mergedArticles })
       );
     } catch (error) {
-      console.log("error");
+      console.error("error");
       yield put(
         getFAvoriteArticlesFailure({
           error: "Error while requesting favorite articles",

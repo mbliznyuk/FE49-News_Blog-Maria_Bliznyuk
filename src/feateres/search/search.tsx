@@ -30,7 +30,6 @@ export const Search: React.FC<Props> = () => {
               }}
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
-                  console.log("title");
                   navigate(`/articles/searched/${searchedText}`);
                 }
               }}

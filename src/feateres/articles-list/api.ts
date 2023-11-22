@@ -9,12 +9,19 @@ import {
   YEAR,
 } from "../date-filter-button/date-filter-button.slice";
 import { SortOptionId } from "../sort-menu/sort-menu";
+import { getPageNumberFromUrlQuery } from "../../ui/pagination/pagination";
 
 export interface PostGetRequestParameters {
   period?: FilterButtonId;
   sortBy?: SortOptionId;
   limit?: number;
   offset?: number;
+}
+
+export const DEFAULT_LIMIT = 12;
+
+export function getCurrentOffset(): number {
+  return (getPageNumberFromUrlQuery() - 1) * DEFAULT_LIMIT;
 }
 
 export const articlesApi = {
@@ -24,9 +31,15 @@ export const articlesApi = {
     const minimalDate = convertPeriodToMinimumIsoDate(parameters.period);
     const fieldForSort = getFieldName(parameters.sortBy);
 
+    console.log(
+      `articles?limit=${parameters.limit || DEFAULT_LIMIT}&offset=${
+        parameters.offset || `${getCurrentOffset()}`
+      }&published_at_gte=${minimalDate}&ordering=${fieldForSort}`
+    );
+
     return fetch(
-      `${baseUrl}articles?limit=${parameters.limit || 12}&offset=${
-        parameters.offset || 0
+      `${baseUrl}articles?limit=${parameters.limit || DEFAULT_LIMIT}&offset=${
+        parameters.offset || "" + getCurrentOffset()
       }&published_at_gte=${minimalDate}&ordering=${fieldForSort}`,
       {
         method: "GET",

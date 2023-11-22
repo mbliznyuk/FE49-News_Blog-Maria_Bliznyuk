@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Footer } from "../footer/footer";
-import { Pagination } from "../pagination/pagination";
+import { PostPagination } from "../pagination/pagination";
 
 type Props = {
   header: React.ReactNode;
@@ -18,7 +18,7 @@ export const MainTemplate: React.FC<Props> = ({ header, title, body }) => {
           <TitleContainer>{title}</TitleContainer>
           <BodyContainer>{body}</BodyContainer>
         </Main>
-        <Pagination></Pagination>
+        <PostPagination></PostPagination>
         <Footer></Footer>
       </ContentWithPaddings>
     </MainTemplateWrapper>

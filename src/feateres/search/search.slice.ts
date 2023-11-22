@@ -17,8 +17,6 @@ const searchSlice = createSlice({
   initialState: initialState,
   reducers: {
     search(state, action: { payload: string }) {
-      console.log("searchSkice");
-      console.log(action.payload);
       state.isInProgress = true;
     },
     searchSuccess(state, action: { payload: AllArticlesResponse }) {

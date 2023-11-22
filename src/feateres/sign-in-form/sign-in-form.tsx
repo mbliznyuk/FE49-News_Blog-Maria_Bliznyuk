@@ -8,7 +8,6 @@ import { authorise, postAuthoriseSuccess } from "../auth/authorisation.slice";
 import CircularColor from "../../ui/progreass/progress";
 
 export const SignInForm: React.FC = () => {
-  console.log("sign-in");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isFormSubmited, setIsFormSubmited] = useState<boolean>(false);
@@ -70,9 +69,7 @@ export const SignInForm: React.FC = () => {
         variant="primary"
         disabled={!email && !password}
         onClick={() => {
-          console.log("before");
           setIsFormSubmited(true);
-          console.log("after");
           if (isFormValid()) {
             dispatch(authorise({ email, password }));
           }

@@ -26,7 +26,6 @@ export default function TitleSelect() {
   const handleChange = (event: SelectChangeEvent) => {
     const eventTartgetValue = event.target.value as SortOptionId;
     dispatch(setActiveSortOption(eventTartgetValue));
-    console.log(eventTartgetValue);
     dispatch(getArticles({ period: period, sortBy: eventTartgetValue }));
     dispatch(getNews({ period: period, sortBy: eventTartgetValue }));
   };

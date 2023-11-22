@@ -27,8 +27,6 @@ export const FavoriteArticlesPage: React.FC = () => {
 
   const favoriteArticlesIds = getFavorites();
   function getFavoriteArticlesArray() {
-    console.log(favoriteArticles.map((el) => el.id));
-    console.log(favoriteArticlesIds);
     return favoriteArticles.filter((element) =>
       favoriteArticlesIds.includes(element.id)
     );

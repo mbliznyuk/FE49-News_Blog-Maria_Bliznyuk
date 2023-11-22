@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { ARTICLES, NEWS, setActiveTab } from "./tab.slice";
+import { useSearchParams } from "react-router-dom";
 
 type TabsProps = {
   tabs: TabModel[];
@@ -22,6 +23,7 @@ export interface TabModel {
 export const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
   const dispatch = useAppDispatch();
   const activeId = useAppSelector((state) => state.tabs.activeTab);
+  const [searchParams, setSearchParams] = useSearchParams();
   return (
     <TabsWrapper>
       {props.tabs.map((element, id) => (
@@ -29,7 +31,13 @@ export const Tabs: React.FC<TabsProps> = (props: TabsProps) => {
           key={id}
           $isSelected={activeId === element.id}
           disabled={element.isDisabled}
-          onClick={() => dispatch(setActiveTab(element.id))}
+          onClick={() => {
+            setSearchParams((params) => {
+              params.set("page", "1");
+              return params;
+            });
+            dispatch(setActiveTab(element.id));
+          }}
         >
           {element.name}
         </Tab>

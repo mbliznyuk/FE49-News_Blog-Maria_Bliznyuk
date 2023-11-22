@@ -18,7 +18,6 @@ export function* getRecommendedArticlesSaga() {
   yield takeLatest(
     getRecommendedArticles,
     function* getRecommendedArticlesHandler() {
-      console.log("recommended article");
       const response: AllArticlesResponse = yield* call(
         articlesApi.getAllArticles,
         {
@@ -29,8 +28,6 @@ export function* getRecommendedArticlesSaga() {
       );
 
       if (response) {
-        console.log("respons ercommended posts");
-        console.log(response);
         const mergedArticles = mergeArticles(response.results);
         yield put(
           getRecommendedArticlesSuccess({ recommendedArticles: mergedArticles })

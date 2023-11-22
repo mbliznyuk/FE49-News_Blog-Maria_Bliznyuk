@@ -17,7 +17,7 @@ export function* getNewsSaga() {
 
     if (response) {
       const mergedNews = mergeNews(response.results);
-      yield put(getNewsSuccess({ news: mergedNews }));
+      yield put(getNewsSuccess({ news: mergedNews, count: response.count }));
     } else {
       yield put(getNewsFailure({ error: "Error while requesting news" }));
     }
