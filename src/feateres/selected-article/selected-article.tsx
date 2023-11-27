@@ -91,9 +91,8 @@ const PostImageWrapper = styled.div`
 
 const PostCardIcons = styled.div`
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
-  width: 160px;
+  /* width: 200px; */
   margin-bottom: 30px;
 `;
 
@@ -102,8 +101,8 @@ const Icon = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  width: 50px;
-  height: 30px;
+  width: 60px;
+  height: 40px;
   border-radius: 5px;
   margin-right: 5px;
   background-color: var(--icon-color);

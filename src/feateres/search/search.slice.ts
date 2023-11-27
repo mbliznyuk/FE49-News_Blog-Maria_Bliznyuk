@@ -10,6 +10,7 @@ const initialState = {
   } as AllArticlesResponse,
   isInProgress: false,
   isCompleted: false,
+  articlesTotalPages: 1,
 };
 
 const searchSlice = createSlice({

@@ -8,7 +8,7 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <SwitchWrapper>
-      {isDark ? "Dark theme" : "Lihgt theme"}
+      {isDark ? "Lihgt theme" : "Dark theme"}
 
       <SwitchInput
         className="switch-checkbox"

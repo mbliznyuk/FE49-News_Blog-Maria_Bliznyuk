@@ -48,16 +48,7 @@ export type PostCardModel = {
   text: string;
 };
 
-export type NewsCardModel = {
-  id: number;
-  title: string;
-  image_url: string;
-  summary: string;
-  published_at: string;
-  text: string;
-};
-
-export type SelectedArticleResponse = {
+export type SelectedPostResponse = {
   id: number;
   title: string;
   url: string;

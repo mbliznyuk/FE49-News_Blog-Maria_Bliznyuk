@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
+import { DEFAULT_LIMIT } from "../articles-list/api";
 
 export type SearchedTitle = {
   searchedTitle: string;
@@ -8,6 +9,7 @@ export type SearchedTitle = {
 const SearchResultSlice = createSlice({
   name: "SearchResult",
   initialState: {
+    searchedArticlesTotalPages: 1,
     searchedArticles: [] as PostCardModel[],
     isLoading: true,
     error: null as Error | null,
@@ -18,10 +20,13 @@ const SearchResultSlice = createSlice({
     },
     getSearchedArticlesSuccess(
       state,
-      action: { payload: { searchedArticles: PostCardModel[] } }
+      action: { payload: { searchedArticles: PostCardModel[]; count: number } }
     ) {
       state.isLoading = false;
       state.searchedArticles = action.payload.searchedArticles;
+      state.searchedArticlesTotalPages = Math.ceil(
+        action.payload.count / DEFAULT_LIMIT
+      );
     },
     getSearchedArticlesFailure(state, error: { payload: unknown }) {
       state.isLoading = false;

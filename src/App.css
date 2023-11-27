@@ -23,6 +23,7 @@
   --border-primary-color: #dfdfdf;
   --border-secondary-color:#dfdfdf;
   --article-card-color:#FFFFFF;
+  --icon-color:rgba(49, 48, 55, 0.1);
 
   
   
@@ -45,6 +46,7 @@
     --border-primary-color:#57565D;
     --border-secondary-color:#888889;
     --article-card-color:#45444B;
+    --icon-color:#45444B;
   }
 }
 

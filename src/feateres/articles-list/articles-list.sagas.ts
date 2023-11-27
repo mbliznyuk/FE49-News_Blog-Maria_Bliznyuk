@@ -44,7 +44,7 @@ function mergeArticles(
       image_url: element.image_url,
       summary: element.summary,
       published_at: element.published_at,
-      text: `During the final days of Alice Neel’s blockbuster solo show at the Metropolitan Museum of Art this summer, the line into the exhibition spanned the length of the museum’s European paintings corridor, and the wait was over half an hour. Titled “People Come First,” the show featured more than 100 gritty cityscapes, domestic interiors, and stripped-down portraits of Neel’s neighbors, friends, and fellow artists in the largest-ever showing of her work in her hometown of New York City.`,
+      text: "Thales Alenia Space has been awarded an Italian Space Agency (ASI) contract to continue the development of its Multi-Purpose Habitat, which the agency hopes will be the first permanent outpost on the Moon. In September 2020, ASI and NASA signed a joint statement of intent to cooperate to advance the goals of the Artemis programme. An ASI press release at the time explained that the cooperation would include but not be limited to: “the provision of crew habitation capabilities on the surface of the Moon and associated technologies to enable short-duration stays for crews on the Moon.” It would, however, take another two years before a solid plan to execute this planned cooperation would emerge.",
     };
   });
 }

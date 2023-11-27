@@ -58,6 +58,6 @@ const Logo = styled.div`
 const HeaderWrapper = styled.div`
   background-color: var(--header-color);
   height: 60px;
+  width: 100%;
   display: flex;
-  /* position: relative; */
 `;

@@ -23,7 +23,10 @@ export function* getSearchedArticleSaga() {
       if (response) {
         const mergedArticles = mergeArticles(response.results);
         yield put(
-          getSearchedArticlesSuccess({ searchedArticles: mergedArticles })
+          getSearchedArticlesSuccess({
+            searchedArticles: mergedArticles,
+            count: response.count,
+          })
         );
       } else {
         yield put(

@@ -8,7 +8,9 @@ import { useAppDispatch, useAppSelector } from "../../hook";
 import { setActiveSortOption } from "./sort-menu.slice";
 import { getArticles } from "../articles-list/articles-list.slice";
 import { getNews } from "../news-list/news-list.slice";
-
+import { styled } from "@material-ui/styles";
+import { makeStyles } from "@material-ui/styles";
+import { hover } from "@testing-library/user-event/dist/hover";
 export type SortOptionId = "TITLE" | "PUBLISHED_AT";
 
 export interface SortOption {
@@ -31,28 +33,49 @@ export default function TitleSelect() {
   };
 
   return (
-    <Box
-      sx={{
-        minWidth: 120,
-        backgroundColor: "var(--input-clor)",
-        borderRadius: "10px",
-        border: "none",
-        color: "var(--text-primary-color)",
-      }}
-    >
-      <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">Sort:</InputLabel>
+    <MyBox>
+      <FormControl color="secondary" fullWidth>
+        <InputLabel
+          sx={{
+            color: "var(--input-accent-color)",
+          }}
+          id="demo-simple-select-label"
+        >
+          Sort:
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={activeId}
           label="Sort:"
           onChange={handleChange}
+          sx={{
+            color: "var(--text-primary-color)",
+            ".MuiOutlinedInput-notchedOutline": {
+              borderColor: "transparent",
+            },
+            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+              borderColor: "var(--input-accent-color)",
+            },
+            "&:hover .MuiOutlinedInput-notchedOutline": {
+              borderColor: "var(--input-accent-color)",
+            },
+            ".MuiSvgIcon-root ": {
+              fill: "var(--input-accent-color)",
+            },
+          }}
         >
-          <MenuItem value={"TITLE"}>Title </MenuItem>
+          <MenuItem value={"TITLE"}>Title</MenuItem>
           <MenuItem value={"PUBLISHED_AT"}>Published At</MenuItem>
         </Select>
       </FormControl>
-    </Box>
+    </MyBox>
   );
 }
+
+const MyBox = styled(Box)({
+  minWidth: 120,
+  backgroundColor: "var(--input-clor)",
+  borderRadius: "5px",
+  color: "var(--text-primary-color)",
+});

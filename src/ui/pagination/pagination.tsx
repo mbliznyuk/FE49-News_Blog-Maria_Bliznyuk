@@ -1,15 +1,16 @@
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { styled } from "styled-components";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import Pagination from "@mui/material/Pagination";
 import PaginationItem from "@mui/material/PaginationItem";
 import Stack from "@mui/material/Stack";
 import React from "react";
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hook";
+import { useParams, useSearchParams } from "react-router-dom";
+import { styled } from "styled-components";
 import { getArticles } from "../../feateres/articles-list/articles-list.slice";
-import { ARTICLES, NEWS } from "../../feateres/tabs/tab.slice";
+import { getSearchedArticles } from "../../feateres/articles-search-result-body/articles-search-result.slice";
 import { getNews } from "../../feateres/news-list/news-list.slice";
+import { ARTICLES, NEWS } from "../../feateres/tabs/tab.slice";
+import { useAppDispatch, useAppSelector } from "../../hook";
 
 export function getPageNumberFromUrlQuery(): number {
   const queryParameters = new URLSearchParams(window.location.search);
@@ -29,8 +30,13 @@ export const PostPagination: React.FC = () => {
   const articlesTotalPages = useAppSelector(
     (state) => state.articles.articlesTotalPages
   );
+  const searchedArticlesTotalPages = useAppSelector(
+    (state) => state.searchedArticles.searchedArticlesTotalPages
+  );
   const newsTotalPages = useAppSelector((state) => state.news.newsTotalPages);
   const { activeTab } = useAppSelector((state) => state.tabs);
+  const isSearchedPage = window.location.pathname.includes("/searched");
+  const { searchedTitle } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [page, setPage] = React.useState(
@@ -42,6 +48,9 @@ export const PostPagination: React.FC = () => {
   }
 
   const getTotalPages = (): number => {
+    if (isSearchedPage) {
+      return searchedArticlesTotalPages;
+    }
     switch (activeTab) {
       case ARTICLES:
         return articlesTotalPages;
@@ -58,8 +67,8 @@ export const PostPagination: React.FC = () => {
       params.set("page", "" + value);
       return params;
     });
-    // navigate("?page=" + value);
-    if (activeTab === ARTICLES) {
+    if (activeTab === ARTICLES && !isSearchedPage) {
+      console.log("articles pagination");
       dispatch(
         getArticles({
           period: periodSelector.activFilterButton,
@@ -67,7 +76,8 @@ export const PostPagination: React.FC = () => {
         })
       );
     }
-    if (activeTab === NEWS) {
+    if (activeTab === NEWS && !isSearchedPage) {
+      console.log("news pagination");
       dispatch(
         getNews({
           period: periodSelector.activFilterButton,
@@ -75,8 +85,11 @@ export const PostPagination: React.FC = () => {
         })
       );
     }
+    if (isSearchedPage) {
+      console.log("search pagination");
+      dispatch(getSearchedArticles({ searchedTitle: searchedTitle! }));
+    }
   };
-  // const navigate = useNavigate();
 
   return (
     <PaginationWraper>

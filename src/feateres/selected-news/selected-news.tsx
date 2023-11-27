@@ -86,7 +86,8 @@ const PostCardIcons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
+  width: 130px;
+  margin-bottom: 30px;
 `;
 
 const Icon = styled.div`
@@ -94,8 +95,8 @@ const Icon = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  width: 50px;
-  height: 30px;
+  width: 60px;
+  height: 40px;
   border-radius: 5px;
   background-color: var(--icon-color);
   transition: 0.8s;

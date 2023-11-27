@@ -14,17 +14,17 @@ type PostCardProps = {
 export const PostCard: React.FC<PostCardProps> = ({ postCard, postType }) => {
   return (
     <ArticleWrapper>
-      <CardImageWrapper
+      <CardImageWrapper>
+        <img src={postCard.image_url} alt="#"></img>
+      </CardImageWrapper>
+      <PostCardDate>{moment(postCard.published_at).format("LL")}</PostCardDate>
+      <PostCardTitle>{postCard.title}</PostCardTitle>
+      <IconWrapper
         onClick={(event) => {
           event.stopPropagation();
           event.preventDefault();
         }}
       >
-        <img src={postCard.image_url} alt="#"></img>
-      </CardImageWrapper>
-      <PostCardDate>{moment(postCard.published_at).format("LL")}</PostCardDate>
-      <PostCardTitle>{postCard.title}</PostCardTitle>
-      <IconWrapper>
         {postType === ARTICLES && getLogin() && (
           <AtricleCardBookmark articleCard={postCard}></AtricleCardBookmark>
         )}
@@ -35,7 +35,7 @@ export const PostCard: React.FC<PostCardProps> = ({ postCard, postType }) => {
 
 const ArticleWrapper = styled.div`
   position: relative;
-  width: 290px;
+  width: 390px;
   height: 310px;
   background-color: var(--article-card-color);
   border-radius: 10px;
@@ -54,6 +54,7 @@ const PostCardTitle = styled.h2`
   padding: 0 10px;
   color: var(--text-primary-color);
   font-size: 16px;
+  height: 44px;
   -webkit-line-clamp: 2;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -87,5 +88,5 @@ const CardImageWrapper = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  margin-right: 20px;
+  padding-right: 20px;
 `;

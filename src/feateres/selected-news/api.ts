@@ -1,8 +1,8 @@
 import { baseUrl, jsonContentTypeHeaders } from "../../api/constants";
-import { SelectedArticleResponse } from "../../api/types";
+import { SelectedPostResponse } from "../../api/types";
 
 export const selectedNewsApi = {
-  getSelectedNews: (newsId: string): Promise<SelectedArticleResponse> => {
+  getSelectedNews: (newsId: string): Promise<SelectedPostResponse> => {
     return fetch(baseUrl + `blogs/${newsId}`, {
       method: "GET",
       headers: {

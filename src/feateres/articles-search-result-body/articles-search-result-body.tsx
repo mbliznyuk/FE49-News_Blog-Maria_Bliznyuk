@@ -31,7 +31,6 @@ export const ArticlesSearchResultBody: React.FC<ArticlesProps> = ({
 };
 
 const ArticelsWrapper = styled.div`
-  width: 80%;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
