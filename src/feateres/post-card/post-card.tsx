@@ -30,8 +30,8 @@ export const PostCard: React.FC<PostCardProps> = ({ postCard, postType }) => {
 
 const PostCardWrapper = styled.div`
   position: relative;
-  width: 390px;
-  height: 310px;
+  width: 380px;
+  height: 300px;
   background-color: var(--article-card-color);
   border-radius: 10px;
   overflow: hidden;
@@ -61,7 +61,6 @@ const PostCardTitle = styled.h2`
 const CardImageWrapper = styled.div`
   width: 100%;
   height: 60%;
-  margin: auto;
   margin-bottom: 10px;
 
   background: linear-gradient(
