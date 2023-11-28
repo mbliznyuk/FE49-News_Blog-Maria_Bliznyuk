@@ -1,4 +1,3 @@
-import { styled } from "@material-ui/styles";
 import Box from "@mui/material/Box";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
@@ -30,7 +29,14 @@ export default function TitleSelect() {
   };
 
   return (
-    <MyBox>
+    <Box
+      sx={{
+        minWidth: 120,
+        backgroundColor: "var(--input-clor)",
+        borderRadius: "5px",
+        color: "var(--text-primary-color)",
+      }}
+    >
       <FormControl color="secondary" fullWidth>
         <InputLabel
           sx={{
@@ -66,13 +72,6 @@ export default function TitleSelect() {
           <MenuItem value={"PUBLISHED_AT"}>Published At</MenuItem>
         </Select>
       </FormControl>
-    </MyBox>
+    </Box>
   );
 }
-
-const MyBox = styled(Box)({
-  minWidth: 120,
-  backgroundColor: "var(--input-clor)",
-  borderRadius: "5px",
-  color: "var(--text-primary-color)",
-});
