@@ -68,7 +68,6 @@ export const PostPagination: React.FC = () => {
       return params;
     });
     if (activeTab === ARTICLES && !isSearchedPage) {
-      console.log("articles pagination");
       dispatch(
         getArticles({
           period: periodSelector.activFilterButton,
@@ -77,7 +76,6 @@ export const PostPagination: React.FC = () => {
       );
     }
     if (activeTab === NEWS && !isSearchedPage) {
-      console.log("news pagination");
       dispatch(
         getNews({
           period: periodSelector.activFilterButton,
@@ -86,7 +84,6 @@ export const PostPagination: React.FC = () => {
       );
     }
     if (isSearchedPage) {
-      console.log("search pagination");
       dispatch(getSearchedArticles({ searchedTitle: searchedTitle! }));
     }
   };
@@ -101,6 +98,9 @@ export const PostPagination: React.FC = () => {
           onChange={handleChange}
           renderItem={(item) => (
             <PaginationItem
+              sx={{
+                color: "var(--text-primary-color)",
+              }}
               slots={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
               {...item}
             />

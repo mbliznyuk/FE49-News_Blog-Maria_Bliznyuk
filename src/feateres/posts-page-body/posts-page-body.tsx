@@ -1,6 +1,5 @@
 import { PostCardModel } from "../../api/types";
 import { useAppSelector } from "../../hook";
-import CircularColor from "../../ui/progreass/progress";
 import { FilterMenu } from "../filtеr-menu/filter-menu";
 import { PostsList } from "../posts-list/posts-list";
 import { Tabs, mockedTabsModels } from "../tabs/tab";
@@ -8,7 +7,7 @@ import { ARTICLES, NEWS } from "../tabs/tab.slice";
 
 type PostsProps = {
   articles: PostCardModel[];
-  news: PostCardModel[]; // TODO DELETE NEWSCARDMODEL
+  news: PostCardModel[];
   isLoading: boolean;
 };
 

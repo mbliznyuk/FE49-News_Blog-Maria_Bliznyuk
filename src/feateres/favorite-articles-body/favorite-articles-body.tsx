@@ -2,8 +2,7 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { PostCardModel } from "../../api/types";
 import CircularColor from "../../ui/progreass/progress";
-import { PostCard } from "../post-card/post-card"; //TODO rename
-import { FavoritePostCard } from "../favorite-card/favorite-card";
+import { FavoriteArticleCard } from "../favorite-card/favorite-card";
 
 type PostsProps = {
   posts: PostCardModel[];
@@ -21,21 +20,21 @@ export const FavoriteArticlesBody: React.FC<PostsProps> = ({
 
   return (
     <>
-      <PostsWrapper>
+      <FavoriteArticlesWrapper>
         {posts.map((element, id) => (
           <StyledLink key={id} to={`/articles/${element.id}`}>
-            <FavoritePostCard
+            <FavoriteArticleCard
               key={id}
-              postCard={getPostById(element.id)!}
-            ></FavoritePostCard>
+              article={getPostById(element.id)!}
+            ></FavoriteArticleCard>
           </StyledLink>
         ))}
-      </PostsWrapper>
+      </FavoriteArticlesWrapper>
     </>
   );
 };
 
-const PostsWrapper = styled.div`
+const FavoriteArticlesWrapper = styled.div`
   width: 100%;
   margin: auto;
   display: flex;

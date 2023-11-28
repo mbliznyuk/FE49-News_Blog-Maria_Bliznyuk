@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Navigate } from "react-router-dom";
-import { Input } from "../../ui/input/input";
-import { Button } from "../../ui/button/button";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { authorise, postAuthoriseSuccess } from "../auth/authorisation.slice";
+import { Button } from "../../ui/button/button";
+import { Input } from "../../ui/input/input";
 import CircularColor from "../../ui/progreass/progress";
+import { authorise } from "../auth/authorisation.slice";
 
 export const SignInForm: React.FC = () => {
   const [email, setEmail] = useState<string>("");
@@ -74,6 +74,7 @@ export const SignInForm: React.FC = () => {
             dispatch(authorise({ email, password }));
           }
         }}
+        role="presentation"
       >
         Sign In
       </Button>

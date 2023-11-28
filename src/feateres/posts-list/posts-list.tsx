@@ -1,9 +1,9 @@
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 import { PostCardModel } from "../../api/types";
-import { PostCard } from "../post-card/post-card"; //TODO rename
-import { Link } from "react-router-dom";
-import { TabId } from "../tabs/tab";
 import CircularColor from "../../ui/progreass/progress";
+import { PostCard } from "../post-card/post-card";
+import { TabId } from "../tabs/tab";
 import { ARTICLES, NEWS } from "../tabs/tab.slice";
 
 type PostsProps = {

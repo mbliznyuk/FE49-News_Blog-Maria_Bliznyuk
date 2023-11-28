@@ -17,21 +17,21 @@ export const SelectedNews: React.FC<Props> = ({
   news,
 }) => {
   return (
-    <PostWrapper>
-      <PostImageWrapper>
+    <NewsWrapper>
+      <NewsImageWrapper>
         <img src={news.image_url} alt="#"></img>
-      </PostImageWrapper>
-      <PostTextWrapper>
-        <PostText>{news.text}</PostText>
-      </PostTextWrapper>
-      <PostCardIcons>
+      </NewsImageWrapper>
+      <NewsTextWrapper>
+        <NewsText>{news.text}</NewsText>
+      </NewsTextWrapper>
+      <NewsCardIcons>
         <Icon>
           <i className="fa-brands fa-facebook-f"></i>
         </Icon>
         <Icon>
           <i className="fa-brands fa-twitter"></i>
         </Icon>
-      </PostCardIcons>
+      </NewsCardIcons>
       <RecommendedNews>
         <PostsList
           posts={recommendedNews}
@@ -39,7 +39,7 @@ export const SelectedNews: React.FC<Props> = ({
           isLoading={isLoading}
         ></PostsList>
       </RecommendedNews>
-    </PostWrapper>
+    </NewsWrapper>
   );
 };
 const RecommendedNews = styled.div`
@@ -48,7 +48,7 @@ const RecommendedNews = styled.div`
   padding: 50px 0 15px 0;
 `;
 
-const PostWrapper = styled.div`
+const NewsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -56,18 +56,18 @@ const PostWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-const PostTextWrapper = styled.div`
+const NewsTextWrapper = styled.div`
   width: 75%;
   margin: auto;
 `;
-const PostText = styled.p`
+const NewsText = styled.p`
   color: var(--text-secondary-color);
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 20px;
 `;
 
-const PostImageWrapper = styled.div`
+const NewsImageWrapper = styled.div`
   width: 90%;
   height: 400px;
   margin: auto;
@@ -82,7 +82,7 @@ const PostImageWrapper = styled.div`
   }
 `;
 
-const PostCardIcons = styled.div`
+const NewsCardIcons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

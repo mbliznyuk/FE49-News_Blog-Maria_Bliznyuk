@@ -1,9 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { styled } from "styled-components";
 import { PostCardModel } from "../../api/types";
 import { isFavorided, toggle } from "./favorites";
-import React from "react";
-import { useAppSelector, useAppDispatch } from "../../hook";
 
 type ArticleCardProps = {
   articleCard: PostCardModel;
@@ -13,10 +11,9 @@ export const AtricleCardBookmark: React.FC<ArticleCardProps> = ({
   articleCard,
 }) => {
   const [isFavorite, setIsFavorite] = useState(isFavorided(articleCard.id));
-  // const isFavorite = useAppSelector((state) => state.favorite.isFavorite);
-  const dispatch = useAppDispatch();
+
   return (
-    <LikeIconWrapper
+    <FavoriteIconWrapper
       onClick={(event) => {
         setIsFavorite(!isFavorite);
         toggle(articleCard.id);
@@ -29,12 +26,14 @@ export const AtricleCardBookmark: React.FC<ArticleCardProps> = ({
       ) : (
         <i className="fa-regular fa-bookmark"></i>
       )}
-    </LikeIconWrapper>
+    </FavoriteIconWrapper>
   );
 };
 
-const LikeIconWrapper = styled.div`
+const FavoriteIconWrapper = styled.div`
+  width: 10%;
   text-align: end;
+  padding: 0 20px;
   cursor: pointer;
   font-size: 18px;
   color: var(--button-primary-color);

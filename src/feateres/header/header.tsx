@@ -1,12 +1,12 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getLogin } from "../../api/local-storage-login";
+import { useAppDispatch, useAppSelector } from "../../hook";
 import { UserNameLabel } from "../../ui/username-label/username-label";
+import { BurgerMenu } from "../burger-menu/burger-menu";
 import { Search } from "../search/search";
 import { ReactComponent as ReactLogo } from "./Logo.svg";
-import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../hook";
 import { toggle } from "./is-burger-open.slice";
-import { BurgerMenu } from "../burger-menu/burger-menu";
-import { getLogin } from "../../api/local-storage-login";
 
 type Props = {};
 

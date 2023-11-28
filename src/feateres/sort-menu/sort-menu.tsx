@@ -1,16 +1,13 @@
-import * as React from "react";
+import { styled } from "@material-ui/styles";
 import Box from "@mui/material/Box";
+import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { setActiveSortOption } from "./sort-menu.slice";
 import { getArticles } from "../articles-list/articles-list.slice";
 import { getNews } from "../news-list/news-list.slice";
-import { styled } from "@material-ui/styles";
-import { makeStyles } from "@material-ui/styles";
-import { hover } from "@testing-library/user-event/dist/hover";
+import { setActiveSortOption } from "./sort-menu.slice";
 export type SortOptionId = "TITLE" | "PUBLISHED_AT";
 
 export interface SortOption {

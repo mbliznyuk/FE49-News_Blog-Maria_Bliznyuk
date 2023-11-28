@@ -4,22 +4,20 @@ import { PostCardModel } from "../../api/types";
 
 import { AtricleCardBookmark } from "../post-card/bookmark";
 
-type FavoritePostCardProps = {
-  postCard: PostCardModel;
+type FavoriteArticlesProps = {
+  article: PostCardModel;
 };
 
-export const FavoritePostCard: React.FC<FavoritePostCardProps> = ({
-  postCard,
+export const FavoriteArticleCard: React.FC<FavoriteArticlesProps> = ({
+  article,
 }) => {
   return (
-    <FavoritePostCardWrapper>
+    <FavoriteArticleWrapper>
       <LeftWrapper>
-        <PostCardTitle>{postCard.title}</PostCardTitle>
-        <PostCardDate>
-          {moment(postCard.published_at).format("LL")}
-        </PostCardDate>
-        <TextWrapper>{postCard.text}</TextWrapper>
-        <PostCardIcons>
+        <ArticleTitle>{article.title}</ArticleTitle>
+        <ArticleDate>{moment(article.published_at).format("LL")}</ArticleDate>
+        <TextWrapper>{article.text}</TextWrapper>
+        <ArticleIcons>
           <Icon>
             <i className="fa-brands fa-facebook-f"></i>
           </Icon>
@@ -28,20 +26,20 @@ export const FavoritePostCard: React.FC<FavoritePostCardProps> = ({
           </Icon>
 
           <Icon>
-            <AtricleCardBookmark articleCard={postCard}></AtricleCardBookmark>
+            <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
           </Icon>
-        </PostCardIcons>
+        </ArticleIcons>
       </LeftWrapper>
       <RightWrapper>
-        <CardImageWrapper>
-          <img src={postCard.image_url} alt="#"></img>
-        </CardImageWrapper>
+        <ArticleImageWrapper>
+          <img src={article.image_url} alt="#"></img>
+        </ArticleImageWrapper>
       </RightWrapper>
-    </FavoritePostCardWrapper>
+    </FavoriteArticleWrapper>
   );
 };
 
-const FavoritePostCardWrapper = styled.div`
+const FavoriteArticleWrapper = styled.div`
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -73,14 +71,14 @@ const TextWrapper = styled.div`
   align-items: end;
 `;
 
-const PostCardDate = styled.div`
+const ArticleDate = styled.div`
   color: #8b8a90;
   font-size: 14px;
   height: 16px;
   margin-bottom: 5px;
 `;
 
-const PostCardTitle = styled.div`
+const ArticleTitle = styled.div`
   color: var(--text-primary-color);
   font-size: 16px;
   font-weight: bold;
@@ -91,7 +89,7 @@ const PostCardTitle = styled.div`
   margin-bottom: 5px;
 `;
 
-const CardImageWrapper = styled.div`
+const ArticleImageWrapper = styled.div`
   width: 120px;
   height: 120px;
   margin: auto;
@@ -109,7 +107,7 @@ const CardImageWrapper = styled.div`
   }
 `;
 
-const PostCardIcons = styled.div`
+const ArticleIcons = styled.div`
   display: flex;
   align-items: center;
   width: 160px;

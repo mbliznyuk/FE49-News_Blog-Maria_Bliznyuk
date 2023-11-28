@@ -19,14 +19,14 @@ export const SelectedArticle: React.FC<Props> = ({
   article,
 }) => {
   return (
-    <PostWrapper>
-      <PostImageWrapper>
+    <ArticleWrapper>
+      <ArticleImageWrapper>
         <img src={article.image_url} alt="#"></img>
-      </PostImageWrapper>
-      <PostTextWrapper>
-        <PostText>{article.text}</PostText>
-      </PostTextWrapper>
-      <PostCardIcons>
+      </ArticleImageWrapper>
+      <ArticleTextWrapper>
+        <ArticleText>{article.text}</ArticleText>
+      </ArticleTextWrapper>
+      <ArticleCardIcons>
         <Icon>
           <i className="fa-brands fa-facebook-f"></i>
         </Icon>
@@ -38,7 +38,7 @@ export const SelectedArticle: React.FC<Props> = ({
             <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
           </Icon>
         )}
-      </PostCardIcons>
+      </ArticleCardIcons>
       <RecommendedArticles>
         <PostsList
           posts={recommendedArticles}
@@ -46,7 +46,7 @@ export const SelectedArticle: React.FC<Props> = ({
           isLoading={isLoading}
         ></PostsList>
       </RecommendedArticles>
-    </PostWrapper>
+    </ArticleWrapper>
   );
 };
 
@@ -55,7 +55,7 @@ const RecommendedArticles = styled.div`
   border-top: 1px solid var(--border-primary-color);
   padding: 50px 0 15px 0;
 `;
-const PostWrapper = styled.div`
+const ArticleWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -63,18 +63,18 @@ const PostWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-const PostTextWrapper = styled.div`
+const ArticleTextWrapper = styled.div`
   width: 75%;
   margin: auto;
 `;
-const PostText = styled.p`
+const ArticleText = styled.p`
   color: var(--text-secondary-color);
   font-size: 16px;
   line-height: 18px;
   margin-bottom: 20px;
 `;
 
-const PostImageWrapper = styled.div`
+const ArticleImageWrapper = styled.div`
   width: 90%;
   height: 400px;
   margin: auto;
@@ -89,10 +89,9 @@ const PostImageWrapper = styled.div`
   }
 `;
 
-const PostCardIcons = styled.div`
+const ArticleCardIcons = styled.div`
   display: flex;
   align-items: center;
-  /* width: 200px; */
   margin-bottom: 30px;
 `;
 

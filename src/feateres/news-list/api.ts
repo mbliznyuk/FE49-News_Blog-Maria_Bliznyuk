@@ -14,12 +14,6 @@ export const newsApi = {
     const minimalDate = convertPeriodToMinimumIsoDate(parameters.period);
     const fieldForSort = getFieldName(parameters.sortBy);
 
-    console.log(
-      `blogs?limit=${parameters.limit || 12}&offset=${
-        parameters.offset || "" + getCurrentOffset()
-      }&published_at_gte=${minimalDate}&ordering=${fieldForSort}`
-    );
-
     return fetch(
       `${baseUrl}blogs?limit=${parameters.limit || 12}&offset=${
         parameters.offset || "" + getCurrentOffset()

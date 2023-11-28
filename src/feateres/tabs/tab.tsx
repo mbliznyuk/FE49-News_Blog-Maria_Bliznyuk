@@ -1,7 +1,7 @@
+import { useSearchParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { ARTICLES, NEWS, setActiveTab } from "./tab.slice";
-import { useSearchParams } from "react-router-dom";
 
 type TabsProps = {
   tabs: TabModel[];
