@@ -69,5 +69,5 @@ export type AuthorisationPayload = {
 
 export type AuthorisationResponse = {
   success: boolean;
-  login: string;
+  name: string;
 };

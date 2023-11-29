@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ThemeSwitcher } from "../../feateres/theme-switcher/theme-switcher";
+import { ThemeSwitcher } from "../theme-switcher/theme-switcher";
 
 export const Footer: React.FC = () => {
   return (

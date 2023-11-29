@@ -5,7 +5,7 @@ import { Button } from "../../ui/button/button";
 import { toggle } from "../header/is-burger-open.slice";
 import { postAuthoriseSuccess } from "../auth/authorisation.slice";
 
-export const BurgerMenu: React.FC = ({}) => {
+export const BurgerMenu: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   return (

@@ -1,3 +1,4 @@
+import { useSearchParams } from "react-router-dom";
 import { styled } from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
 import { getArticles } from "../articles-list/articles-list.slice";
@@ -9,7 +10,6 @@ import {
   YEAR,
   setActiveFilterButton,
 } from "./date-filter-button.slice";
-import { useNavigate, useSearchParams } from "react-router-dom";
 
 type FilterrButtonProps = {
   filterButton: FilterButtonModel[];
@@ -34,7 +34,6 @@ export const FilterButton: React.FC<FilterrButtonProps> = (
   props: FilterrButtonProps
 ) => {
   const dispatch = useAppDispatch();
-  // const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const activeId = useAppSelector(
     (state) => state.filterButton.activFilterButton
@@ -53,7 +52,6 @@ export const FilterButton: React.FC<FilterrButtonProps> = (
             dispatch(setActiveFilterButton(element.id));
             dispatch(getArticles({ period: element.id, sortBy: sortActiveId }));
             dispatch(getNews({ period: element.id, sortBy: sortActiveId }));
-            // navigate("?page=1");
             setSearchParams((params) => {
               params.set("page", "1");
               return params;

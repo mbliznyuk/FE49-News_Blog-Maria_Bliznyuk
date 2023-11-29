@@ -1,18 +1,15 @@
 import { Navigate, useParams } from "react-router-dom";
 import { BackLink } from "../../feateres/back-link/back-link";
 import { Header } from "../../feateres/header/header";
-import { SelectedArticle } from "../../feateres/selected-article/selected-article";
 
+import { useEffect } from "react";
+import { getRecommendedNews } from "../../feateres/recommended-posts/recommended-news/recommended-news.slice";
+import { SelectedNews } from "../../feateres/selected-news/selected-news";
+import { getSelectedNews } from "../../feateres/selected-news/selected-news.slice";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import CircularColor from "../../ui/progreass/progress";
 import { SecondaryTemplate } from "../../ui/templates/secondary-template";
 import { Title } from "../../ui/title/title";
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../hook";
-import { getSelectedArticle } from "../../feateres/selected-article/selected-article.slice";
-import CircularColor from "../../ui/progreass/progress";
-import { getRecommendedArticles } from "../../feateres/recommended-posts/recommended-articles/recommended-articles.slice";
-import { getRecommendedNews } from "../../feateres/recommended-posts/recommended-news/recommended-news.slice";
-import { getSelectedNews } from "../../feateres/selected-news/selected-news.slice";
-import { SelectedNews } from "../../feateres/selected-news/selected-news";
 
 export const SelectedNewsPage: React.FC = () => {
   const { newsId } = useParams();

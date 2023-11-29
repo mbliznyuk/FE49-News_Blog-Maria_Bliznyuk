@@ -11,7 +11,7 @@ export function* authorisationSaga() {
   yield takeLatest(authorise, function* activateHandler({ payload }) {
     const response = yield* call(api.authorise, payload);
     if (response && response.success) {
-      yield call(setLogin, response.login);
+      yield call(setLogin, response.name);
       yield put(authoriseSuccess());
     } else {
       yield put(authoriseFailure());

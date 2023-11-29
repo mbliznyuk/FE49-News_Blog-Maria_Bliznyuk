@@ -4,6 +4,9 @@ import { AtricleCardBookmark } from "../post-card/bookmark";
 import { PostsList } from "../posts-list/posts-list";
 import { ARTICLES } from "../tabs/tab.slice";
 import { getLogin } from "../../api/local-storage-login";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { showPopUp } from "../pop-up/pop-up.slice";
+import { PostImagePreview } from "../pop-up/pop-up";
 
 type Props = {
   article: PostCardModel;
@@ -18,35 +21,56 @@ export const SelectedArticle: React.FC<Props> = ({
 
   article,
 }) => {
+  const dispatch = useAppDispatch();
+  const { isPopUpShown: isPreviewShown } = useAppSelector(
+    (state) => state.popUp
+  );
+
   return (
-    <ArticleWrapper>
-      <ArticleImageWrapper>
-        <img src={article.image_url} alt="#"></img>
-      </ArticleImageWrapper>
-      <ArticleTextWrapper>
-        <ArticleText>{article.text}</ArticleText>
-      </ArticleTextWrapper>
-      <ArticleCardIcons>
-        <Icon>
-          <i className="fa-brands fa-facebook-f"></i>
-        </Icon>
-        <Icon>
-          <i className="fa-brands fa-twitter"></i>
-        </Icon>
-        {!!getLogin() && (
-          <Icon>
-            <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
+    <>
+      <PostImagePreview isDialogOpen={isPreviewShown}></PostImagePreview>
+      <ArticleWrapper>
+        <ArticleImageWrapper>
+          <img src={article.image_url} alt="#"></img>
+        </ArticleImageWrapper>
+        <ArticleTextWrapper>
+          <ArticleText>{article.text}</ArticleText>
+        </ArticleTextWrapper>
+        <ArticleCardIcons>
+          <Icon
+            onClick={() => {
+              console.log("popUp article");
+              dispatch(
+                showPopUp({ message: "You have shared this post in Facebook" })
+              );
+            }}
+          >
+            <i className="fa-brands fa-facebook-f"></i>
           </Icon>
-        )}
-      </ArticleCardIcons>
-      <RecommendedArticles>
-        <PostsList
-          posts={recommendedArticles}
-          postType={ARTICLES}
-          isLoading={isLoading}
-        ></PostsList>
-      </RecommendedArticles>
-    </ArticleWrapper>
+          <Icon
+            onClick={() => {
+              dispatch(
+                showPopUp({ message: "You have shared this post in Twitter" })
+              );
+            }}
+          >
+            <i className="fa-brands fa-twitter"></i>
+          </Icon>
+          {!!getLogin() && (
+            <Icon>
+              <AtricleCardBookmark articleCard={article}></AtricleCardBookmark>
+            </Icon>
+          )}
+        </ArticleCardIcons>
+        <RecommendedArticles>
+          <PostsList
+            posts={recommendedArticles}
+            postType={ARTICLES}
+            isLoading={isLoading}
+          ></PostsList>
+        </RecommendedArticles>
+      </ArticleWrapper>
+    </>
   );
 };
 

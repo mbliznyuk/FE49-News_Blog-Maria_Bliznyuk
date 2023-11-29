@@ -9,7 +9,7 @@ import {
   YEAR,
 } from "../date-filter-button/date-filter-button.slice";
 import { SortOptionId } from "../sort-menu/sort-menu";
-import { getPageNumberFromUrlQuery } from "../../ui/pagination/pagination";
+import { getPageNumberFromUrlQuery } from "../pagination/pagination";
 
 export interface PostGetRequestParameters {
   period?: FilterButtonId;

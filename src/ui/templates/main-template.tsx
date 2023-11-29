@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Footer } from "../footer/footer";
-import { PostPagination } from "../pagination/pagination";
+import { Footer } from "../../feateres/footer/footer";
+import { PostPagination } from "../../feateres/pagination/pagination";
 
 type Props = {
   header: React.ReactNode;

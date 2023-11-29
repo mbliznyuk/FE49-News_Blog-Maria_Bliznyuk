@@ -1,7 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PostCardModel } from "../../api/types";
-import { FilterButtonId } from "../date-filter-button/date-filter-button";
-import { SortOptionId } from "../sort-menu/sort-menu";
 
 const favoriteArticlesListSlice = createSlice({
   name: "FavoroteArticlesList",

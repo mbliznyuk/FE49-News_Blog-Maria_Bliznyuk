@@ -6,10 +6,10 @@ import Stack from "@mui/material/Stack";
 import React from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { styled } from "styled-components";
-import { getArticles } from "../../feateres/articles-list/articles-list.slice";
-import { getSearchedArticles } from "../../feateres/articles-search-result-body/articles-search-result.slice";
-import { getNews } from "../../feateres/news-list/news-list.slice";
-import { ARTICLES, NEWS } from "../../feateres/tabs/tab.slice";
+import { getArticles } from "../articles-list/articles-list.slice";
+import { getSearchedArticles } from "../articles-search-result-body/articles-search-result.slice";
+import { getNews } from "../news-list/news-list.slice";
+import { ARTICLES, NEWS } from "../tabs/tab.slice";
 import { useAppDispatch, useAppSelector } from "../../hook";
 
 export function getPageNumberFromUrlQuery(): number {

@@ -2,6 +2,9 @@ import { styled } from "styled-components";
 import { PostCardModel } from "../../api/types";
 import { PostsList } from "../posts-list/posts-list";
 import { NEWS } from "../tabs/tab.slice";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { showPopUp } from "../pop-up/pop-up.slice";
+import { PostImagePreview } from "../pop-up/pop-up";
 
 type Props = {
   news: PostCardModel;
@@ -16,30 +19,50 @@ export const SelectedNews: React.FC<Props> = ({
 
   news,
 }) => {
+  const dispatch = useAppDispatch();
+
+  const { isPopUpShown: isPreviewShown } = useAppSelector(
+    (state) => state.popUp
+  );
   return (
-    <NewsWrapper>
-      <NewsImageWrapper>
-        <img src={news.image_url} alt="#"></img>
-      </NewsImageWrapper>
-      <NewsTextWrapper>
-        <NewsText>{news.text}</NewsText>
-      </NewsTextWrapper>
-      <NewsCardIcons>
-        <Icon>
-          <i className="fa-brands fa-facebook-f"></i>
-        </Icon>
-        <Icon>
-          <i className="fa-brands fa-twitter"></i>
-        </Icon>
-      </NewsCardIcons>
-      <RecommendedNews>
-        <PostsList
-          posts={recommendedNews}
-          postType={NEWS}
-          isLoading={isLoading}
-        ></PostsList>
-      </RecommendedNews>
-    </NewsWrapper>
+    <>
+      <PostImagePreview isDialogOpen={isPreviewShown}></PostImagePreview>
+      <NewsWrapper>
+        <NewsImageWrapper>
+          <img src={news.image_url} alt="#"></img>
+        </NewsImageWrapper>
+        <NewsTextWrapper>
+          <NewsText>{news.text}</NewsText>
+        </NewsTextWrapper>
+        <NewsCardIcons>
+          <Icon
+            onClick={() => {
+              dispatch(
+                showPopUp({ message: "You have shared this post in Facebook" })
+              );
+            }}
+          >
+            <i className="fa-brands fa-facebook-f"></i>
+          </Icon>
+          <Icon
+            onClick={() => {
+              dispatch(
+                showPopUp({ message: "You have shared this post in Twitter" })
+              );
+            }}
+          >
+            <i className="fa-brands fa-twitter"></i>
+          </Icon>
+        </NewsCardIcons>
+        <RecommendedNews>
+          <PostsList
+            posts={recommendedNews}
+            postType={NEWS}
+            isLoading={isLoading}
+          ></PostsList>
+        </RecommendedNews>
+      </NewsWrapper>
+    </>
   );
 };
 const RecommendedNews = styled.div`

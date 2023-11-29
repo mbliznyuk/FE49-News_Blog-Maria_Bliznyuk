@@ -1,11 +1,11 @@
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../hook";
-import { reset, search } from "./search.slice";
 import { DropDown } from "./drop-down";
-import { Navigate, useNavigate } from "react-router-dom";
+import { reset, search } from "./search.slice";
 
 type Props = {};
 

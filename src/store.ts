@@ -16,6 +16,9 @@ import { SortMenuReducer } from "./feateres/sort-menu/sort-menu.slice";
 import { TabsSliceReducer } from "./feateres/tabs/tab.slice";
 import { themeSwitcherReducer } from "./feateres/theme-switcher/theme-switcher.slice";
 import { rootSaga } from "./sagas";
+import { registrationReducer } from "./feateres/auth/registration.slice";
+import { signUpFormSliceReducer } from "./feateres/sign-up-form/sign-up-form.slice";
+import { popUpReducer } from "./feateres/pop-up/pop-up.slice";
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -36,6 +39,9 @@ export const store = configureStore({
     sortMenu: SortMenuReducer,
     burgerMenu: burgerOpenreducer,
     authorisation: authorisationReducer,
+    registration: registrationReducer,
+    signUpForm: signUpFormSliceReducer,
+    popUp: popUpReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middleware),

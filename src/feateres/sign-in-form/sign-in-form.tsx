@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hook";
 import { Button } from "../../ui/button/button";
 import { Input } from "../../ui/input/input";
 import CircularColor from "../../ui/progreass/progress";
+import { Link } from "react-router-dom";
 import { authorise } from "../auth/authorisation.slice";
 
 export const SignInForm: React.FC = () => {
@@ -80,11 +81,17 @@ export const SignInForm: React.FC = () => {
       </Button>
       <LinkToSignUpFormWrapper>
         <SignUpFormText>Don't have an account? </SignUpFormText>
-        <SignUpFormLink>SignUp</SignUpFormLink>
+        <StyledLink to={"/sign-up"}>
+          <SignUpFormLink>SignUp</SignUpFormLink>
+        </StyledLink>
       </LinkToSignUpFormWrapper>
     </FormWrapper>
   );
 };
+
+const StyledLink = styled(Link)`
+  text-decoration: unset;
+`;
 
 const FormWrapper = styled.form`
   background-color: var(--header-color);

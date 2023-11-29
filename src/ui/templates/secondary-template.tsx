@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Footer } from "../footer/footer";
+import { Footer } from "../../feateres/footer/footer";
 
 type Props = {
   header: React.ReactNode;
